@@ -1,0 +1,4 @@
+D:\GitHubProject\AuroraControls\src\AuroraControls\bin\Release\AuroraControls.dll
+D:\GitHubProject\AuroraControls\src\AuroraControls\bin\Release\AuroraControls.pdb
+D:\GitHubProject\AuroraControls\src\AuroraControls\obj\Release\AuroraControls.dll
+D:\GitHubProject\AuroraControls\src\AuroraControls\obj\Release\AuroraControls.pdb
