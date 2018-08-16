@@ -8,7 +8,10 @@ Version 0.0.1
 
 Version 0.0.2
 + Update target to .Net Framework 4.7.1
-+ SEtting version number
++ Setting version number
+
+Version 0.0.3
++ Adding label timer control
 
 
 How to use:
