@@ -18,4 +18,7 @@ How to use:
 + Download or clone
 + Build the project
 + Add component to your toolbox manually
-+ Insert into form and set the color
++ For Textbox component
+  + set color for background and foreground
++ For TimerLabel
+  + set format for date time you want to show
