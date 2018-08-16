@@ -11,7 +11,11 @@ namespace AuroraControls
     public class aLabelTimer:Label
     {
         Timer waktu = new Timer();
-       
+
+        #region Member Variables
+        String formatText = "dd-mm-yyyy HH:mm:ss";
+      
+        #endregion
 
         #region Constructor
         public aLabelTimer()
@@ -24,28 +28,28 @@ namespace AuroraControls
 
         private void Waktu_Tick(object sender, EventArgs e)
         {
-            this.Text = System.DateTime.Now.ToString();
+            this.Text = System.DateTime.Now.ToString(formatText);
         }
         #endregion
 
-        //#region User Defined Properties
-        //[Browsable(true)]
-        //[Category("Extended Properties")]
-        //[Description("Format Text")]
-        //[DisplayName("Format Text")]
-        //public IFormatProvider FormatText
-        //{
-        //    get
-        //    {
-        //        return FormatText;
-        //    }
-        //    set
-        //    {
-        //        this.Text.ToString( FormatText);
+        #region User Defined Properties
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Format Text")]
+        [DisplayName("Format Text")]
+        public String FormatText
+        {
+            get
+            {
+                return this.formatText;
+            }
+            set
+            {
+                this.formatText = value;
 
-        //    }
-        //}
-      
-        //#endregion
+            }
+        }
+
+        #endregion
     }
 }
