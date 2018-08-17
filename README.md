@@ -12,6 +12,7 @@ Version 0.0.2
 
 Version 0.0.3
 + Adding label timer control
++ Adding button component, changed color when mouse enter or leave the button
 
 
 How to use:
@@ -22,3 +23,5 @@ How to use:
   + set color for background and foreground
 + For TimerLabel
   + set format for date time you want to show
++ For Button component
+  + set color for background and foreground
