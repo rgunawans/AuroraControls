@@ -13,7 +13,7 @@ namespace AuroraControls
         Timer waktu = new Timer();
 
         #region Member Variables
-        String formatText = "dd-mm-yyyy HH:mm:ss";
+        String formatText = "dd-MMM-yyyy HH:mm:ss";
       
         #endregion
 
