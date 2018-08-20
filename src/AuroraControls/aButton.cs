@@ -12,7 +12,7 @@ namespace AuroraControls
     {
         #region Member Variables
         Color focusColor = Color.White;
-        Color unfocusColor = Color.White;
+        Color unfocusColor = SystemColors.Control;
         Color focusTextColor = Color.Black;
         Color unfocusTextColor = Color.Black;
         #endregion
@@ -71,7 +71,7 @@ namespace AuroraControls
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set text color when focused")]
-        [DisplayName("Focused Color")]
+        [DisplayName("Focused Text Color")]
         public Color FocusedTextColor
         {
             get
@@ -87,7 +87,7 @@ namespace AuroraControls
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set text color when lost focus or leave the control")]
-        [DisplayName("unFocused Color")]
+        [DisplayName("unFocused Text Color")]
         public Color unFocusedTextColor
         {
             get

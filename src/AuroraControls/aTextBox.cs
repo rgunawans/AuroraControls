@@ -12,7 +12,7 @@ namespace AuroraControls
     {
         #region Member Variables
         Color focusColor = Color.White;
-        Color unfocusColor = Color.White;
+        Color unfocusColor = SystemColors.Control;
         Color focusTextColor = Color.Black;
         Color unfocusTextColor = Color.Black;
         #endregion
