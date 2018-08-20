@@ -17,6 +17,11 @@ Version 0.0.3
 + Adding button component, changed color when mouse enter or leave the button
 
 
+Updated August 20, 2018
+Version 0.0.5
++ Bug fix
++ update default unfocused color to SystemColor.Controls
+
 How to use:
 + Download or clone
 + Build the project
