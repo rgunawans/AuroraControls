@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace AuroraControls
 {
-    public class aLabelTimer:Label
+    public class aLabelTimer : Label
     {
         Timer waktu = new Timer();
 
@@ -29,7 +29,7 @@ namespace AuroraControls
 
         private void Waktu_Tick(object sender, EventArgs e)
         {
-            this.Text = System.DateTime.Now.ToString(formatText,ci);
+            this.Text = System.DateTime.Now.ToString(formatText, ci);
         }
         #endregion
 
