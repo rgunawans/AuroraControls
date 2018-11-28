@@ -46,6 +46,9 @@
     <Compile Include="aButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="aCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="aLabelTimer.cs">
       <SubType>Component</SubType>
     </Compile>
