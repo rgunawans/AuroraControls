@@ -41,3 +41,6 @@ How to use:
   + set color for background and foreground (background and text color)
 + For CheckedBox component
   + set Checked and unchecked color (background and text color)
+
+
+Support for future development : https://paypal.me/rgunawans
