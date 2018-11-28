@@ -3,6 +3,7 @@ TODO for future version:
   + MaskedTextBox 
   + RichTextBox
   + TabControl
+  + Stopwatch Timer
 + Adding smart tags for all component
 + Adding Required property for all component
 + build NuGet package
