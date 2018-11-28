@@ -1,0 +1,11 @@
+TODO for future version:
++ Add controls
+  + MaskedTextBox 
+  + RichTextBox
+  + TabControl
++ Adding smart tags for all component
++ Adding Required property for all component
++ build NuGet package
+
+
+
