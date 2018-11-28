@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuroraControls", "AuroraControls\AuroraControls.csproj", "{88C552FB-9732-4162-8949-D7066F074708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoProject", "DemoProject\DemoProject.csproj", "{C4BE2A4F-8642-4BD4-A742-BDA51E8ED912}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{88C552FB-9732-4162-8949-D7066F074708}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88C552FB-9732-4162-8949-D7066F074708}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88C552FB-9732-4162-8949-D7066F074708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4BE2A4F-8642-4BD4-A742-BDA51E8ED912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4BE2A4F-8642-4BD4-A742-BDA51E8ED912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4BE2A4F-8642-4BD4-A742-BDA51E8ED912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4BE2A4F-8642-4BD4-A742-BDA51E8ED912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE890E11-8614-4595-84C0-D2A4AD67D323}
 	EndGlobalSection
 EndGlobal
