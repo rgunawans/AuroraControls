@@ -9,17 +9,17 @@ using System.Windows.Forms;
 
 namespace AuroraControls
 {
-   public class aCheckBox : CheckBox
+   public class ACheckBox : CheckBox
     {
         #region Member Variables
         Color checkColor = Color.White;
-        Color uncheckColor = SystemColors.Control;
+        Color unCheckColor = SystemColors.Control;
         Color checkTextColor = Color.Black;
-        Color uncheckTextColor = Color.Black;
+        Color unCheckTextColor = Color.Black;
         #endregion
 
         #region Constructor
-        public aCheckBox()
+        public ACheckBox()
         {
             this.CheckStateChanged += ACheckBox_CheckStateChanged;
            
@@ -36,8 +36,8 @@ namespace AuroraControls
             }
             else
             {
-                this.ForeColor = uncheckTextColor;
-                this.BackColor = uncheckColor;
+                this.ForeColor = unCheckTextColor;
+                this.BackColor = unCheckColor;
             }
         }
 
@@ -66,15 +66,15 @@ namespace AuroraControls
         [Category("Extended Properties")]
         [Description("Set color when unchecked")]
         [DisplayName("unChecked Color")]
-        public Color unCheckColor
+        public Color UnCheckColor
         {
             get
             {
-                return this.uncheckColor;
+                return this.unCheckColor;
             }
             set
             {
-                this.uncheckColor = value;
+                this.unCheckColor = value;
 
             }
         }
@@ -98,15 +98,15 @@ namespace AuroraControls
         [Category("Extended Properties")]
         [Description("Set text color when unchecked")]
         [DisplayName("unChecked Text Color")]
-        public Color UncheckTextColor
+        public Color UnCheckTextColor
         {
             get
             {
-                return this.uncheckTextColor;
+                return this.unCheckTextColor;
             }
             set
             {
-                this.uncheckTextColor = value;
+                this.unCheckTextColor = value;
 
             }
         }

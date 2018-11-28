@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace AuroraControls
 {
-    public class aTextBox : TextBox
+    public class ATextBox : TextBox
     {
         #region Member Variables
         Color focusColor = Color.White;
@@ -18,7 +18,7 @@ namespace AuroraControls
         #endregion
 
         #region Constructor
-        public aTextBox()
+        public ATextBox()
         {
 
             this.BackColor = focusColor;
@@ -37,7 +37,7 @@ namespace AuroraControls
         private void Textbox_Leave(object sender, EventArgs e)
         {
             this.BackColor = unfocusColor;
-            this.focusTextColor = unfocusTextColor;
+            this.ForeColor = unfocusTextColor;
         }
 
         #region User Defined Properties

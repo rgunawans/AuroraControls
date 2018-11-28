@@ -43,16 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aButton.cs">
+    <Compile Include="AButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="aCheckBox.cs">
+    <Compile Include="ACheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="aLabelTimer.cs">
+    <Compile Include="ALabelTimer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="aTextBox.cs">
+    <Compile Include="ATextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
