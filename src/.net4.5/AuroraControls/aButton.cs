@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace AuroraControls
 {
-    public class aButton:Button
+    public class AButton:Button
     {
         #region Member Variables
         Color focusColor = Color.White;
@@ -17,7 +17,7 @@ namespace AuroraControls
         Color unfocusTextColor = Color.Black;
         #endregion
 
-        public aButton()
+        public AButton()
         {
             this.MouseEnter += AButton_MouseEnter;
             this.MouseLeave += AButton_MouseLeave;
@@ -26,7 +26,7 @@ namespace AuroraControls
         private void AButton_MouseLeave(object sender, EventArgs e)
         {
             this.BackColor = unfocusColor;
-            this.focusTextColor = unfocusTextColor;
+            this.ForeColor = unfocusTextColor;
         }
 
         private void AButton_MouseEnter(object sender, EventArgs e)

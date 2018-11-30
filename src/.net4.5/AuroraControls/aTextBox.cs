@@ -8,18 +8,17 @@ using System.Drawing;
 
 namespace AuroraControls
 {
-    public class aTextBox : TextBox
+    public class ATextBox : TextBox
     {
         #region Member Variables
         Color focusColor = Color.White;
         Color unfocusColor = SystemColors.Control;
         Color focusTextColor = Color.Black;
         Color unfocusTextColor = Color.Black;
-        Boolean isRequired = false;
         #endregion
 
         #region Constructor
-        public aTextBox()
+        public ATextBox()
         {
 
             this.BackColor = focusColor;
@@ -38,40 +37,14 @@ namespace AuroraControls
         private void Textbox_Leave(object sender, EventArgs e)
         {
             this.BackColor = unfocusColor;
-            this.focusTextColor = unfocusTextColor;
-
-            if (isRequired && this.TextLength==0)
-            {
-                MessageBox.Show("This field cannot empty");
-                this.Focus();
-            }
+            this.ForeColor = unfocusTextColor;
         }
-
-
 
         #region User Defined Properties
         [Browsable(true)]
         [Category("Extended Properties")]
-        [Description("Required or not")]
-        [DisplayName("Required")]
-        public Boolean IsRequired
-        {
-            get
-            {
-                return this.isRequired;
-            }
-            set
-            {
-                this.isRequired = value;
-
-            }
-        }
-
-        [Browsable(true)]
-        [Category("Extended Properties")]
         [Description("Set color when focused")]
         [DisplayName("Focused Color")]
-
         public Color FocusedColor
         {
             get
@@ -88,7 +61,6 @@ namespace AuroraControls
         [Category("Extended Properties")]
         [Description("Set color when lost focus or leave the control")]
         [DisplayName("unFocused Color")]
-
         public Color unFocusedColor
         {
             get
@@ -105,7 +77,6 @@ namespace AuroraControls
         [Category("Extended Properties")]
         [Description("Set text color when focused")]
         [DisplayName("Focused Text Color")]
-
         public Color FocusedTextColor
         {
             get
@@ -118,7 +89,6 @@ namespace AuroraControls
 
             }
         }
-
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set text color when lost focus or leave the control")]
