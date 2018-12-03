@@ -2,6 +2,11 @@
 
 This is my personal project, based on Windows Form Basic Control
 
+Update December 2, 2018
+Version 0.4.7.7 (for .NET 4.7.1 and above) and 0.4.5.7 (for .NET 4.5 and above)
++ New Property for ATextBox, 'selectOnFocus' -> make all text selectAll() when focused
+
+
 Updated November 28, 2018
 Version 0.0.6
 + Bug fix
