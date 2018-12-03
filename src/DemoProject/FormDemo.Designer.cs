@@ -28,12 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.aButton1 = new AuroraControls.AButton();
-            this.aCheckBox1 = new AuroraControls.ACheckBox();
-            this.aLabelTimer1 = new AuroraControls.ALabelTimer();
-            this.aTextBox1 = new AuroraControls.ATextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.aTextBox2 = new AuroraControls.ATextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pctFocusText = new System.Windows.Forms.PictureBox();
             this.pctFocusFore = new System.Windows.Forms.PictureBox();
@@ -44,6 +39,12 @@
             this.btnUnFocusText = new AuroraControls.AButton();
             this.pctUnFocusFore = new System.Windows.Forms.PictureBox();
             this.btnUnFocusFore = new AuroraControls.AButton();
+            this.chSelectAll = new System.Windows.Forms.CheckBox();
+            this.aTextBox2 = new AuroraControls.ATextBox();
+            this.aTextBox1 = new AuroraControls.ATextBox();
+            this.aLabelTimer1 = new AuroraControls.ALabelTimer();
+            this.aCheckBox1 = new AuroraControls.ACheckBox();
+            this.aButton1 = new AuroraControls.AButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctFocusText)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctFocusFore)).BeginInit();
@@ -52,74 +53,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctUnFocusFore)).BeginInit();
             this.SuspendLayout();
             // 
-            // aButton1
-            // 
-            this.aButton1.FocusedColor = System.Drawing.Color.White;
-            this.aButton1.FocusedTextColor = System.Drawing.Color.Black;
-            this.aButton1.Location = new System.Drawing.Point(12, 128);
-            this.aButton1.Name = "aButton1";
-            this.aButton1.Size = new System.Drawing.Size(84, 36);
-            this.aButton1.TabIndex = 0;
-            this.aButton1.Text = "aButton1";
-            this.aButton1.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.aButton1.unFocusedTextColor = System.Drawing.Color.Black;
-            this.aButton1.UseVisualStyleBackColor = true;
-            // 
-            // aCheckBox1
-            // 
-            this.aCheckBox1.AutoSize = true;
-            this.aCheckBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.aCheckBox1.CheckColor = System.Drawing.Color.LimeGreen;
-            this.aCheckBox1.CheckTextColor = System.Drawing.Color.DarkRed;
-            this.aCheckBox1.ForeColor = System.Drawing.Color.Black;
-            this.aCheckBox1.Location = new System.Drawing.Point(12, 28);
-            this.aCheckBox1.Name = "aCheckBox1";
-            this.aCheckBox1.Size = new System.Drawing.Size(108, 21);
-            this.aCheckBox1.TabIndex = 1;
-            this.aCheckBox1.Text = "aCheckBox1";
-            this.aCheckBox1.UnCheckColor = System.Drawing.SystemColors.Control;
-            this.aCheckBox1.UnCheckTextColor = System.Drawing.Color.Black;
-            this.aCheckBox1.UseVisualStyleBackColor = false;
-            // 
-            // aLabelTimer1
-            // 
-            this.aLabelTimer1.AutoSize = true;
-            this.aLabelTimer1.CultureInfo = new System.Globalization.CultureInfo("en-US");
-            this.aLabelTimer1.FormatText = "dd-MMM-yyyy HH:mm:ss";
-            this.aLabelTimer1.Location = new System.Drawing.Point(13, 52);
-            this.aLabelTimer1.Name = "aLabelTimer1";
-            this.aLabelTimer1.Size = new System.Drawing.Size(151, 17);
-            this.aLabelTimer1.TabIndex = 2;
-            this.aLabelTimer1.Text = "28-Nov-2018 21:49:37";
-            // 
-            // aTextBox1
-            // 
-            this.aTextBox1.BackColor = System.Drawing.Color.White;
-            this.aTextBox1.FocusedColor = System.Drawing.Color.White;
-            this.aTextBox1.FocusedTextColor = System.Drawing.Color.Black;
-            this.aTextBox1.Location = new System.Drawing.Point(12, 72);
-            this.aTextBox1.Name = "aTextBox1";
-            this.aTextBox1.Size = new System.Drawing.Size(314, 22);
-            this.aTextBox1.TabIndex = 3;
-            this.aTextBox1.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.aTextBox1.unFocusedTextColor = System.Drawing.Color.Black;
-            // 
             // colorDialog1
             // 
             this.colorDialog1.AnyColor = true;
             this.colorDialog1.FullOpen = true;
-            // 
-            // aTextBox2
-            // 
-            this.aTextBox2.BackColor = System.Drawing.Color.White;
-            this.aTextBox2.FocusedColor = System.Drawing.Color.White;
-            this.aTextBox2.FocusedTextColor = System.Drawing.Color.Black;
-            this.aTextBox2.Location = new System.Drawing.Point(12, 100);
-            this.aTextBox2.Name = "aTextBox2";
-            this.aTextBox2.Size = new System.Drawing.Size(314, 22);
-            this.aTextBox2.TabIndex = 4;
-            this.aTextBox2.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.aTextBox2.unFocusedTextColor = System.Drawing.Color.Black;
             // 
             // groupBox1
             // 
@@ -238,11 +175,90 @@
             this.btnUnFocusFore.UseVisualStyleBackColor = true;
             this.btnUnFocusFore.Click += new System.EventHandler(this.btnUnFocusFore_Click);
             // 
+            // chSelectAll
+            // 
+            this.chSelectAll.AutoSize = true;
+            this.chSelectAll.Location = new System.Drawing.Point(374, 158);
+            this.chSelectAll.Name = "chSelectAll";
+            this.chSelectAll.Size = new System.Drawing.Size(153, 21);
+            this.chSelectAll.TabIndex = 7;
+            this.chSelectAll.Text = "Select All On Focus";
+            this.chSelectAll.UseVisualStyleBackColor = true;
+            this.chSelectAll.CheckedChanged += new System.EventHandler(this.chSelectAll_CheckedChanged);
+            // 
+            // aTextBox2
+            // 
+            this.aTextBox2.BackColor = System.Drawing.Color.White;
+            this.aTextBox2.FocusedColor = System.Drawing.Color.White;
+            this.aTextBox2.FocusedTextColor = System.Drawing.Color.Black;
+            this.aTextBox2.Location = new System.Drawing.Point(12, 100);
+            this.aTextBox2.Name = "aTextBox2";
+            this.aTextBox2.SelectAllOnFocus = false;
+            this.aTextBox2.Size = new System.Drawing.Size(314, 22);
+            this.aTextBox2.TabIndex = 3;
+            this.aTextBox2.unFocusedColor = System.Drawing.SystemColors.Control;
+            this.aTextBox2.unFocusedTextColor = System.Drawing.Color.Black;
+            // 
+            // aTextBox1
+            // 
+            this.aTextBox1.BackColor = System.Drawing.Color.White;
+            this.aTextBox1.FocusedColor = System.Drawing.Color.White;
+            this.aTextBox1.FocusedTextColor = System.Drawing.Color.Black;
+            this.aTextBox1.Location = new System.Drawing.Point(12, 72);
+            this.aTextBox1.Name = "aTextBox1";
+            this.aTextBox1.SelectAllOnFocus = false;
+            this.aTextBox1.Size = new System.Drawing.Size(314, 22);
+            this.aTextBox1.TabIndex = 2;
+            this.aTextBox1.unFocusedColor = System.Drawing.SystemColors.Control;
+            this.aTextBox1.unFocusedTextColor = System.Drawing.Color.Black;
+            // 
+            // aLabelTimer1
+            // 
+            this.aLabelTimer1.AutoSize = true;
+            this.aLabelTimer1.CultureInfo = new System.Globalization.CultureInfo("en-US");
+            this.aLabelTimer1.FormatText = "dd-MMM-yyyy HH:mm:ss";
+            this.aLabelTimer1.Location = new System.Drawing.Point(13, 52);
+            this.aLabelTimer1.Name = "aLabelTimer1";
+            this.aLabelTimer1.Size = new System.Drawing.Size(151, 17);
+            this.aLabelTimer1.TabIndex = 1;
+            this.aLabelTimer1.Text = "03-Dec-2018 13:26:49";
+            // 
+            // aCheckBox1
+            // 
+            this.aCheckBox1.AutoSize = true;
+            this.aCheckBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.aCheckBox1.CheckColor = System.Drawing.Color.LimeGreen;
+            this.aCheckBox1.CheckTextColor = System.Drawing.Color.DarkRed;
+            this.aCheckBox1.ForeColor = System.Drawing.Color.Black;
+            this.aCheckBox1.Location = new System.Drawing.Point(12, 28);
+            this.aCheckBox1.Name = "aCheckBox1";
+            this.aCheckBox1.Size = new System.Drawing.Size(108, 21);
+            this.aCheckBox1.TabIndex = 0;
+            this.aCheckBox1.Text = "aCheckBox1";
+            this.aCheckBox1.UnCheckColor = System.Drawing.SystemColors.Control;
+            this.aCheckBox1.UnCheckTextColor = System.Drawing.Color.Black;
+            this.aCheckBox1.UseVisualStyleBackColor = false;
+            // 
+            // aButton1
+            // 
+            this.aButton1.FocusedColor = System.Drawing.Color.White;
+            this.aButton1.FocusedTextColor = System.Drawing.Color.Black;
+            this.aButton1.Location = new System.Drawing.Point(12, 128);
+            this.aButton1.Name = "aButton1";
+            this.aButton1.Size = new System.Drawing.Size(84, 36);
+            this.aButton1.TabIndex = 4;
+            this.aButton1.Text = "aButton1";
+            this.aButton1.unFocusedColor = System.Drawing.SystemColors.Control;
+            this.aButton1.unFocusedTextColor = System.Drawing.Color.Black;
+            this.aButton1.UseVisualStyleBackColor = true;
+            this.aButton1.Click += new System.EventHandler(this.aButton1_Click);
+            // 
             // FormDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chSelectAll);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.aTextBox2);
@@ -281,6 +297,7 @@
         private AuroraControls.AButton btnUnFocusText;
         private System.Windows.Forms.PictureBox pctUnFocusFore;
         private AuroraControls.AButton btnUnFocusFore;
+        private System.Windows.Forms.CheckBox chSelectAll;
     }
 }
 

@@ -15,6 +15,8 @@ namespace AuroraControls
         Color unfocusColor = SystemColors.Control;
         Color focusTextColor = Color.Black;
         Color unfocusTextColor = Color.Black;
+        Boolean selectAllOnFocus = false;
+
         #endregion
 
         #region Constructor
@@ -32,6 +34,9 @@ namespace AuroraControls
         {
             this.BackColor = focusColor;
             this.ForeColor = focusTextColor;
+            if (selectAllOnFocus)   this.SelectAll();
+            
+
         }
 
         private void Textbox_Leave(object sender, EventArgs e)
@@ -41,6 +46,24 @@ namespace AuroraControls
         }
 
         #region User Defined Properties
+
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Select all on focus")]
+        [DisplayName("Select All On Focus")]
+        public Boolean SelectAllOnFocus
+        {
+            get
+            {
+                return this.selectAllOnFocus;
+            }
+            set
+            {
+                this.selectAllOnFocus = value;
+
+            }
+        }
+
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set color when focused")]

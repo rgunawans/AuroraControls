@@ -42,6 +42,9 @@ namespace DemoProject
 
             aButton1.unFocusedColor = pctUnFocusFore.BackColor;
             aButton1.unFocusedTextColor = pctUnFocusText.BackColor;
+
+            aTextBox1.SelectAllOnFocus = chSelectAll.Checked;
+            aTextBox2.SelectAllOnFocus = chSelectAll.Checked;
         }
         private void btnFocusFore_Click(object sender, EventArgs e)
         {
@@ -75,6 +78,16 @@ namespace DemoProject
             {
                 pctUnFocusText.BackColor = colorDialog1.Color; setcolor();
             }
+        }
+
+        private void chSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            setcolor();
+        }
+
+        private void aButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
