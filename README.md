@@ -2,6 +2,11 @@
 
 This is my personal project, based on Windows Form Basic Control
 
+Update December 2, 2018
+Version 0.4.7.7 (for .NET 4.7.1 and above) and 0.4.5.7 (for .NET 4.5 and above)
++ New Property for ATextBox, 'selectOnFocus' -> make all text selectAll() when focused
+
+
 Updated November 28, 2018
 Version 0.0.6
 + Bug fix
@@ -13,21 +18,7 @@ Version 0.0.5
 + Bug fix
 + update default unfocused color to SystemColor.Controls
 
-Updated August 17, 2018
-Version 0.0.3
-+ Adding label timer control
-+ Adding button component, changed color when mouse enter or leave the button
-
-Updated August 15, 2018
-Version 0.0.2
-+ Update target to .Net Framework 4.7.1
-+ Setting version number
-
-Updated August 13, 2018
-Version 0.0.1
-+ Setting textbox backcolor and textcolor when focus or lost focused from properties
-
-
+Older version check on our Wiki : https://github.com/rgunawans/AuroraControls/wiki/What's-New-for-previous-version
 
 How to use:
 + Download or clone
@@ -43,4 +34,4 @@ How to use:
   + set Checked and unchecked color (background and text color)
 
 
-Support for future development : https://paypal.me/rgunawans
+Support for future development and coffee : https://paypal.me/rgunawans
