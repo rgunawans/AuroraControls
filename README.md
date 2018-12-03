@@ -43,4 +43,4 @@ How to use:
   + set Checked and unchecked color (background and text color)
 
 
-Support for future development : https://paypal.me/rgunawans
+Support for future development and coffee : https://paypal.me/rgunawans
