@@ -15,7 +15,7 @@ namespace AuroraControls
 
         #region Member Variables
         String formatText = "dd-MMM-yyyy HH:mm:ss";
-        CultureInfo ci = new CultureInfo("EN-US");
+        CultureInfo ci = new CultureInfo("EN-US",false);
         #endregion
 
         #region Constructor
