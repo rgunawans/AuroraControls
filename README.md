@@ -18,6 +18,7 @@ How to use:
 + Add component to your toolbox manually
 + For Textbox component
   + set color for background and foreground (background and text color)
+  + set Mandatory TRUE or FALSE, if set TRUE then textbox must have value
 + For TimerLabel
   + set format for date time you want to show
 + For Button component
