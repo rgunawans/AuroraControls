@@ -16,7 +16,7 @@ namespace AuroraControls
         Color focusTextColor = Color.Black;
         Color unfocusTextColor = Color.Black;
         Boolean selectAllOnFocus = false;
-
+        Boolean isMandatory = false;
         #endregion
 
         #region Constructor
@@ -29,6 +29,8 @@ namespace AuroraControls
             this.Enter += Textbox_Enter;
 
         }
+
+
         #endregion
         private void Textbox_Enter(object sender, EventArgs e)
         {
@@ -36,12 +38,59 @@ namespace AuroraControls
             this.ForeColor = focusTextColor;
             if (selectAllOnFocus) this.SelectAll();
 
+
         }
 
         private void Textbox_Leave(object sender, EventArgs e)
         {
             this.BackColor = unfocusColor;
             this.ForeColor = unfocusTextColor;
+            if (this.Mandatory && this.Text.Length == 0)
+            {
+                this.Focus();
+                Label warntext = new Label
+                {
+                    ForeColor = Color.Red,
+                    Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                    Top = this.Top + (this.Height + 2),
+                    Left = this.Left,
+                    Text = "This textbox cannot blank !",
+                    Visible = true,
+                    Name = "warningText",
+                    AutoSize = true
+                };
+                this.Parent.Controls.Add(warntext);
+                //  warntext.Show();
+            }
+            else
+            {
+                Label warn = this.Parent.Controls.Find("warningText", true).FirstOrDefault() as Label;
+                if (warn != null)
+                {
+
+                    warn.Dispose();
+                }
+            }
+
+        }
+
+        #region User Defined Properties
+
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("This textbox cannot blank")]
+        [DisplayName("Is Mandatory")]
+        public Boolean Mandatory
+        {
+            get
+            {
+                return this.isMandatory;
+            }
+            set
+            {
+                this.isMandatory = value;
+
+            }
         }
 
         [Browsable(true)]
@@ -61,8 +110,6 @@ namespace AuroraControls
             }
         }
 
-
-        #region User Defined Properties
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set color when focused")]
