@@ -46,6 +46,10 @@ namespace DemoProject
 
             aTextBox1.SelectAllOnFocus = chSelectAll.Checked;
             aTextBox2.SelectAllOnFocus = chSelectAll.Checked;
+
+            aTextBox1.Mandatory = chMandatory.Checked;
+            aTextBox2.Mandatory = chMandatory.Checked;
+
         }
         private void btnFocusFore_Click(object sender, EventArgs e)
         {
@@ -86,7 +90,12 @@ namespace DemoProject
             setcolor();
         }
 
-        private void aButton1_Click(object sender, EventArgs e)
+        private void ChMandatory_CheckedChanged(object sender, EventArgs e)
+        {
+            setcolor();
+        }
+
+        private void ATextBox1_Leave(object sender, EventArgs e)
         {
 
         }
