@@ -13,7 +13,7 @@ namespace AuroraControls
     {
         #region Member Variables
         Color checkColor = Color.White;
-        Color unCheckColor = SystemColors.Control;
+        Color unCheckColor = Color.White;
         Color checkTextColor = Color.Black;
         Color unCheckTextColor = Color.Black;
         #endregion
