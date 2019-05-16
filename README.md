@@ -2,21 +2,13 @@
 
 This is my personal project, based on Windows Form Basic Control
 
+Update April 30, 2019
+Version 0.4.7.10 (for .NET 4.7.1 and above) and 0.4.5.10 (for .NET 4.5 and above)
++ New Property for ATextBox, 'isMandatory' -> if set TRUE, textbox must have value
+
 Update December 2, 2018
 Version 0.4.7.7 (for .NET 4.7.1 and above) and 0.4.5.7 (for .NET 4.5 and above)
 + New Property for ATextBox, 'selectOnFocus' -> make all text selectAll() when focused
-
-
-Updated November 28, 2018
-Version 0.0.6
-+ Bug fix
-+ New Control, CheckedBox set color for Checked and unChecked state
-+ New Demo Project for better understanding how to use
-
-Updated August 20, 2018
-Version 0.0.5
-+ Bug fix
-+ update default unfocused color to SystemColor.Controls
 
 Older version check on our Wiki : https://github.com/rgunawans/AuroraControls/wiki/What's-New-for-previous-version
 
@@ -26,6 +18,7 @@ How to use:
 + Add component to your toolbox manually
 + For Textbox component
   + set color for background and foreground (background and text color)
+  + set Mandatory TRUE or FALSE, if set TRUE then textbox must have value
 + For TimerLabel
   + set format for date time you want to show
 + For Button component
