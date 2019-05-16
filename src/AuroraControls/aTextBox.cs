@@ -27,11 +27,56 @@ namespace AuroraControls
 
             this.Leave += Textbox_Leave;
             this.Enter += Textbox_Enter;
-            
+            this.LostFocus += ATextBox_LostFocus;
+            this.GotFocus += ATextBox_GotFocus;
         }
 
 
+
         #endregion
+
+        private void ATextBox_GotFocus(object sender, EventArgs e)
+        {
+            this.BackColor = focusColor;
+            this.ForeColor = focusTextColor;
+            if (selectAllOnFocus) this.SelectAll();
+        }
+
+        private void ATextBox_LostFocus(object sender, EventArgs e)
+        {
+            this.BackColor = unfocusColor;
+            this.ForeColor = unfocusTextColor;
+
+            if (this.Mandatory && this.Text.Length == 0)
+            {
+                this.Focus();
+                Label warntext = new Label
+                {
+                    ForeColor = Color.Red,
+                    Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                    Top = this.Top + (this.Height + 2),
+                    Left = this.Left,
+                    Text = "This textbox cannot blank !",
+                    Visible = true,
+                    Name = "warningText",
+                    AutoSize = true
+                };
+                this.Parent.Controls.Add(warntext);
+                //  warntext.Show();
+            }
+            else
+            {
+                Label warn = this.Parent.Controls.Find("warningText", true).FirstOrDefault() as Label;
+                if (warn != null)
+                {
+
+                    warn.Dispose();
+                }
+            }
+        }
+
+
+
         private void Textbox_Enter(object sender, EventArgs e)
         {
             this.BackColor = focusColor;
