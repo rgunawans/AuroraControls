@@ -3,6 +3,10 @@
 This is my personal project, based on Windows Form Basic Control
 
 Update April 30, 2019
+Version 0.4.7.11 (for .NET 4.7.1 and above) and 0.4.5.11 (for .NET 4.5 and above)
++ bug fix Mandatory properties
+
+Update April 30, 2019
 Version 0.4.7.10 (for .NET 4.7.1 and above) and 0.4.5.10 (for .NET 4.5 and above)
 + New Property for ATextBox, 'isMandatory' -> if set TRUE, textbox must have value
 
