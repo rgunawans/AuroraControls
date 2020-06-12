@@ -84,7 +84,7 @@ namespace DemoProject
                 pctUnFocusText.BackColor = colorDialog1.Color; setcolor();
             }
         }
-
+        
         private void chSelectAll_CheckedChanged(object sender, EventArgs e)
         {
             setcolor();

@@ -21,12 +21,26 @@ namespace AuroraControls
         {
             this.MouseEnter += AButton_MouseEnter;
             this.MouseLeave += AButton_MouseLeave;
+            this.Enter += AButton_Enter;
+            this.Leave += AButton_Leave;
+        }
+
+        private void AButton_Leave(object sender, EventArgs e)
+        {
+            this.BackColor = unfocusColor;
+            this.ForeColor = unfocusTextColor;
+        }
+
+        private void AButton_Enter(object sender, EventArgs e)
+        {
+            this.BackColor = focusColor;
+            this.ForeColor = focusTextColor;
         }
 
         private void AButton_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = unfocusColor;
-            this.ForeColor = unfocusTextColor;
+            this.BackColor = focusColor;
+            this.ForeColor = focusTextColor;
         }
 
         private void AButton_MouseEnter(object sender, EventArgs e)
