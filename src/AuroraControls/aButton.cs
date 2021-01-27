@@ -39,8 +39,8 @@ namespace AuroraControls
 
         private void AButton_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = focusColor;
-            this.ForeColor = focusTextColor;
+            this.BackColor = unfocusColor;
+            this.ForeColor = unfocusTextColor;
         }
 
         private void AButton_MouseEnter(object sender, EventArgs e)
