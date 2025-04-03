@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Atlantean Studio")]
 [assembly: AssemblyProduct("AuroraControls")]
-[assembly: AssemblyCopyright("Copyright © Robby Gunawan S - Atlantean Studio 2018-2019")]
+[assembly: AssemblyCopyright("Copyright © Robby Gunawan S - Atlantean Studio 2018-2025")]
 [assembly: AssemblyTrademark("Robby Gunawan S")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.4.7.14")]
-[assembly: AssemblyFileVersion("0.4.7.14")]
+[assembly: AssemblyVersion("0.4.7.25041")]
+[assembly: AssemblyFileVersion("0.4.7.25041")]
