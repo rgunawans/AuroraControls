@@ -1,50 +1,34 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+ 
 namespace AuroraControls
 {
-   public class ACheckBox : CheckBox
+    public class ACheckBox : CheckBox
     {
         #region Member Variables
-        Color checkColor = Color.White;
-        Color unCheckColor = Color.White;
-        Color checkTextColor = Color.Black;
-        Color unCheckTextColor = Color.Black;
+        private Color checkColor = Color.White;
+        private Color unCheckColor = Color.White;
+        private Color checkTextColor = Color.Black;
+        private Color unCheckTextColor = Color.Black;
         #endregion
-
+ 
         #region Constructor
         public ACheckBox()
         {
             this.CheckStateChanged += ACheckBox_CheckStateChanged;
-           
-
+            // Initialize the colors based on the initial checked state
+            ACheckBox_CheckStateChanged(this, EventArgs.Empty);
         }
-
+        #endregion
+ 
         private void ACheckBox_CheckStateChanged(object sender, EventArgs e)
         {
-            if (this.Checked )
-            {
-                this.ForeColor = checkTextColor;
-                this.BackColor = checkColor;
-                
-            }
-            else
-            {
-                this.ForeColor = unCheckTextColor;
-                this.BackColor = unCheckColor;
-            }
+            this.ForeColor = this.Checked ? checkTextColor : unCheckTextColor;
+            this.BackColor = this.Checked ? checkColor : unCheckColor;
         }
-
-       
-        #endregion
-
-
+ 
         #region User Defined Properties
         [Browsable(true)]
         [Category("Extended Properties")]
@@ -52,65 +36,55 @@ namespace AuroraControls
         [DisplayName("Checked Color")]
         public Color CheckColor
         {
-            get
-            {
-                return this.checkColor;
-            }
+            get => checkColor;
             set
             {
-                this.checkColor = value;
-
+                checkColor = value;
+                Invalidate(); // Redraw the control
             }
         }
+ 
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set color when unchecked")]
-        [DisplayName("unChecked Color")]
+        [DisplayName("Unchecked Color")]
         public Color UnCheckColor
         {
-            get
-            {
-                return this.unCheckColor;
-            }
+            get => unCheckColor;
             set
             {
-                this.unCheckColor = value;
-
+                unCheckColor = value;
+                Invalidate(); // Redraw the control
             }
         }
+ 
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set text color when checked")]
         [DisplayName("Checked Text Color")]
         public Color CheckTextColor
         {
-            get
-            {
-                return this.checkTextColor;
-            }
+            get => checkTextColor;
             set
             {
-                this.checkTextColor = value;
-
+                checkTextColor = value;
+                Invalidate(); // Redraw the control
             }
         }
+ 
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set text color when unchecked")]
-        [DisplayName("unChecked Text Color")]
+        [DisplayName("Unchecked Text Color")]
         public Color UnCheckTextColor
         {
-            get
-            {
-                return this.unCheckTextColor;
-            }
+            get => unCheckTextColor;
             set
             {
-                this.unCheckTextColor = value;
-
+                unCheckTextColor = value;
+                Invalidate(); // Redraw the control
             }
         }
         #endregion
-
     }
 }
