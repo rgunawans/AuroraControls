@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,71 +6,67 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
-
+ 
 namespace AuroraControls
 {
-    public class ALabelTimer:Label
+    public class ALabelTimer : Label
     {
-        Timer waktu = new Timer();
-
+        private Timer timer = new Timer();
+ 
         #region Member Variables
-        String formatText = "dd-MMM-yyyy HH:mm:ss";
-        CultureInfo ci = new CultureInfo("EN-US",false);
+        private string formatText = "dd-MMM-yyyy HH:mm:ss";
+        private CultureInfo culture = new CultureInfo("en-US", false);
         #endregion
-
+ 
         #region Constructor
         public ALabelTimer()
         {
-            waktu.Interval = 1000;
-            waktu.Enabled = true;
-
-            waktu.Tick += Waktu_Tick;
-        }
-
-        private void Waktu_Tick(object sender, EventArgs e)
-        {
-            this.Text = System.DateTime.Now.ToString(formatText,ci);
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
+            timer.Start();
         }
         #endregion
-
+ 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            UpdateLabel();
+        }
+ 
+        private void UpdateLabel()
+        {
+            this.Text = DateTime.Now.ToString(formatText, culture);
+        }
+ 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                timer.Tick -= Timer_Tick; // Unsubscribe from the event
+                timer.Dispose(); // Dispose of the timer
+            }
+            base.Dispose(disposing);
+        }
+ 
         #region User Defined Properties
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Format Text")]
         [DisplayName("Format Text")]
-
-        public String FormatText
+        public string FormatText
         {
-            get
-            {
-                return this.formatText;
-            }
-            set
-            {
-                this.formatText = value;
-
-            }
+            get => formatText;
+            set => formatText = value;
         }
-
-
+ 
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Culture Info")]
-        [DisplayName("Culture Info")]
-
-        public CultureInfo CultureInfo
+        [DisplayName("Culture")]
+        public CultureInfo Culture
         {
-            get
-            {
-                return this.ci;
-            }
-            set
-            {
-                this.ci = value;
-
-            }
+            get => culture;
+            set => culture = value;
         }
-
         #endregion
     }
 }
