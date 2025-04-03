@@ -20,33 +20,7 @@ namespace DemoProject
 
       private void setcolor()
         {
-            aCheckBox1.CheckColor = pctFocusFore.BackColor;
-            aCheckBox1.CheckTextColor = pctFocusText.BackColor;
-
-            aCheckBox1.UnCheckColor = pctUnFocusFore.BackColor;
-            aCheckBox1.UnCheckTextColor = pctUnFocusText.BackColor;
-
-            aTextBox1.FocusedColor = pctFocusFore.BackColor;
-            aTextBox1.FocusedTextColor = pctFocusText.BackColor;
-
-            aTextBox1.unFocusedColor = pctUnFocusFore.BackColor;
-            aTextBox1.unFocusedTextColor = pctUnFocusText.BackColor;
-
-            aTextBox2.FocusedColor = pctFocusFore.BackColor;
-            aTextBox2.FocusedTextColor = pctFocusText.BackColor;
-
-            aTextBox2.unFocusedColor = pctUnFocusFore.BackColor;
-            aTextBox2.unFocusedTextColor = pctUnFocusText.BackColor;
-
-            aButton1.FocusedColor = pctFocusFore.BackColor;
-            aButton1.FocusedTextColor = pctFocusText.BackColor;
-
-            aButton1.unFocusedColor = pctUnFocusFore.BackColor;
-            aButton1.unFocusedTextColor = pctUnFocusText.BackColor;
-
-            aTextBox1.SelectAllOnFocus = chSelectAll.Checked;
-            aTextBox2.SelectAllOnFocus = chSelectAll.Checked;
-
+           
             aTextBox1.Mandatory = chMandatory.Checked;
             aTextBox2.Mandatory = chMandatory.Checked;
 
@@ -56,6 +30,10 @@ namespace DemoProject
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pctFocusFore.BackColor = colorDialog1.Color;
+                aTextBox1.focusColor = colorDialog1.Color;
+                aTextBox2.focusColor = colorDialog1.Color;
+                aButton1.FocusedColor = colorDialog1.Color;
+                aCheckBox1.CheckColor = colorDialog1.Color;
                 setcolor();
             }
 
@@ -65,7 +43,12 @@ namespace DemoProject
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                pctFocusText.BackColor = colorDialog1.Color; setcolor();
+                pctFocusText.BackColor = colorDialog1.Color;
+                aTextBox1.focusTextColor = colorDialog1.Color;
+                aTextBox2.focusTextColor = colorDialog1.Color;
+                aButton1.FocusedTextColor = colorDialog1.Color;
+                aCheckBox1.CheckTextColor = colorDialog1.Color;
+                setcolor();
             }
         }
 
@@ -73,7 +56,12 @@ namespace DemoProject
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                pctUnFocusFore.BackColor = colorDialog1.Color; setcolor();
+                pctUnFocusFore.BackColor = colorDialog1.Color;
+                aTextBox1.unfocusColor = colorDialog1.Color;
+                aTextBox2.unfocusColor = colorDialog1.Color;
+                aButton1.UnfocusedColor = colorDialog1.Color;
+                aCheckBox1.UnCheckColor = colorDialog1.Color;
+                setcolor();
             }
         }
 
@@ -81,7 +69,12 @@ namespace DemoProject
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                pctUnFocusText.BackColor = colorDialog1.Color; setcolor();
+                pctUnFocusText.BackColor = colorDialog1.Color;
+                aTextBox1.unfocusTextColor = colorDialog1.Color;
+                aTextBox2.unfocusTextColor = colorDialog1.Color;
+                aButton1.UnfocusedTextColor = colorDialog1.Color;
+                aCheckBox1.UnCheckTextColor = colorDialog1.Color;
+                setcolor();
             }
         }
         

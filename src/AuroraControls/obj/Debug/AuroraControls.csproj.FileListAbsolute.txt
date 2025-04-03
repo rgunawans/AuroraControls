@@ -3,3 +3,9 @@ D:\GitHubProject\AuroraControls\src\AuroraControls\bin\Debug\AuroraControls.pdb
 D:\GitHubProject\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.dll
 D:\GitHubProject\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.pdb
 D:\GitHubProject\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.csproj.CoreCompileInputs.cache
+D:\GithubProjects\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.csproj.AssemblyReference.cache
+D:\GithubProjects\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.csproj.CoreCompileInputs.cache
+D:\GithubProjects\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.dll
+D:\GithubProjects\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.pdb
+D:\GithubProjects\AuroraControls\src\AuroraControls\bin\Debug\AuroraControls.dll
+D:\GithubProjects\AuroraControls\src\AuroraControls\bin\Debug\AuroraControls.pdb

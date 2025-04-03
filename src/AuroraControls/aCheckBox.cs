@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
  
@@ -8,10 +10,10 @@ namespace AuroraControls
     public class ACheckBox : CheckBox
     {
         #region Member Variables
-        private Color checkColor = Color.White;
-        private Color unCheckColor = Color.White;
-        private Color checkTextColor = Color.Black;
-        private Color unCheckTextColor = Color.Black;
+        public Color checkColor = Color.White;
+        public Color unCheckColor = Color.White;
+        public Color checkTextColor = Color.Black;
+        public Color unCheckTextColor = Color.Black;
         #endregion
  
         #region Constructor

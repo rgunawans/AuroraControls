@@ -92,29 +92,29 @@
             // 
             // btnFocusText
             // 
-            this.btnFocusText.FocusedColor = System.Drawing.Color.White;
+            this.btnFocusText.FocusedColor = System.Drawing.SystemColors.Control;
             this.btnFocusText.FocusedTextColor = System.Drawing.Color.Black;
             this.btnFocusText.Location = new System.Drawing.Point(15, 81);
             this.btnFocusText.Name = "btnFocusText";
             this.btnFocusText.Size = new System.Drawing.Size(84, 36);
             this.btnFocusText.TabIndex = 2;
             this.btnFocusText.Text = "Text Color";
-            this.btnFocusText.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.btnFocusText.unFocusedTextColor = System.Drawing.Color.Black;
+            this.btnFocusText.UnfocusedColor = System.Drawing.SystemColors.Control;
+            this.btnFocusText.UnfocusedTextColor = System.Drawing.Color.Black;
             this.btnFocusText.UseVisualStyleBackColor = true;
             this.btnFocusText.Click += new System.EventHandler(this.btnFocusText_Click);
             // 
             // btnFocusFore
             // 
-            this.btnFocusFore.FocusedColor = System.Drawing.Color.White;
+            this.btnFocusFore.FocusedColor = System.Drawing.SystemColors.Control;
             this.btnFocusFore.FocusedTextColor = System.Drawing.Color.Black;
             this.btnFocusFore.Location = new System.Drawing.Point(15, 30);
             this.btnFocusFore.Name = "btnFocusFore";
             this.btnFocusFore.Size = new System.Drawing.Size(84, 36);
             this.btnFocusFore.TabIndex = 1;
             this.btnFocusFore.Text = "Fore Color";
-            this.btnFocusFore.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.btnFocusFore.unFocusedTextColor = System.Drawing.Color.Black;
+            this.btnFocusFore.UnfocusedColor = System.Drawing.SystemColors.Control;
+            this.btnFocusFore.UnfocusedTextColor = System.Drawing.Color.Black;
             this.btnFocusFore.UseVisualStyleBackColor = true;
             this.btnFocusFore.Click += new System.EventHandler(this.btnFocusFore_Click);
             // 
@@ -142,15 +142,15 @@
             // 
             // btnUnFocusText
             // 
-            this.btnUnFocusText.FocusedColor = System.Drawing.Color.White;
+            this.btnUnFocusText.FocusedColor = System.Drawing.SystemColors.Control;
             this.btnUnFocusText.FocusedTextColor = System.Drawing.Color.Black;
             this.btnUnFocusText.Location = new System.Drawing.Point(25, 81);
             this.btnUnFocusText.Name = "btnUnFocusText";
             this.btnUnFocusText.Size = new System.Drawing.Size(84, 36);
             this.btnUnFocusText.TabIndex = 8;
             this.btnUnFocusText.Text = "Text Color";
-            this.btnUnFocusText.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.btnUnFocusText.unFocusedTextColor = System.Drawing.Color.Black;
+            this.btnUnFocusText.UnfocusedColor = System.Drawing.SystemColors.Control;
+            this.btnUnFocusText.UnfocusedTextColor = System.Drawing.Color.Black;
             this.btnUnFocusText.UseVisualStyleBackColor = true;
             this.btnUnFocusText.Click += new System.EventHandler(this.btnUnFocusText_Click);
             // 
@@ -165,15 +165,15 @@
             // 
             // btnUnFocusFore
             // 
-            this.btnUnFocusFore.FocusedColor = System.Drawing.Color.White;
+            this.btnUnFocusFore.FocusedColor = System.Drawing.SystemColors.Control;
             this.btnUnFocusFore.FocusedTextColor = System.Drawing.Color.Black;
             this.btnUnFocusFore.Location = new System.Drawing.Point(25, 30);
             this.btnUnFocusFore.Name = "btnUnFocusFore";
             this.btnUnFocusFore.Size = new System.Drawing.Size(84, 36);
             this.btnUnFocusFore.TabIndex = 7;
             this.btnUnFocusFore.Text = "Fore Color";
-            this.btnUnFocusFore.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.btnUnFocusFore.unFocusedTextColor = System.Drawing.Color.Black;
+            this.btnUnFocusFore.UnfocusedColor = System.Drawing.SystemColors.Control;
+            this.btnUnFocusFore.UnfocusedTextColor = System.Drawing.Color.Black;
             this.btnUnFocusFore.UseVisualStyleBackColor = true;
             this.btnUnFocusFore.Click += new System.EventHandler(this.btnUnFocusFore_Click);
             // 
@@ -182,7 +182,7 @@
             this.chSelectAll.AutoSize = true;
             this.chSelectAll.Location = new System.Drawing.Point(374, 158);
             this.chSelectAll.Name = "chSelectAll";
-            this.chSelectAll.Size = new System.Drawing.Size(153, 21);
+            this.chSelectAll.Size = new System.Drawing.Size(145, 20);
             this.chSelectAll.TabIndex = 7;
             this.chSelectAll.Text = "Select All On Focus";
             this.chSelectAll.UseVisualStyleBackColor = true;
@@ -193,7 +193,7 @@
             this.chMandatory.AutoSize = true;
             this.chMandatory.Location = new System.Drawing.Point(587, 158);
             this.chMandatory.Name = "chMandatory";
-            this.chMandatory.Size = new System.Drawing.Size(97, 21);
+            this.chMandatory.Size = new System.Drawing.Size(93, 20);
             this.chMandatory.TabIndex = 8;
             this.chMandatory.Text = "Mandatory";
             this.chMandatory.UseVisualStyleBackColor = true;
@@ -202,41 +202,33 @@
             // aTextBox2
             // 
             this.aTextBox2.BackColor = System.Drawing.Color.White;
-            this.aTextBox2.FocusedColor = System.Drawing.Color.White;
-            this.aTextBox2.FocusedTextColor = System.Drawing.Color.Black;
+            this.aTextBox2.ForeColor = System.Drawing.Color.Black;
             this.aTextBox2.Location = new System.Drawing.Point(12, 129);
             this.aTextBox2.Mandatory = false;
             this.aTextBox2.Name = "aTextBox2";
-            this.aTextBox2.SelectAllOnFocus = false;
             this.aTextBox2.Size = new System.Drawing.Size(314, 22);
             this.aTextBox2.TabIndex = 3;
-            this.aTextBox2.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.aTextBox2.unFocusedTextColor = System.Drawing.Color.Black;
             // 
             // aTextBox1
             // 
             this.aTextBox1.BackColor = System.Drawing.Color.White;
-            this.aTextBox1.FocusedColor = System.Drawing.Color.White;
-            this.aTextBox1.FocusedTextColor = System.Drawing.Color.Black;
+            this.aTextBox1.ForeColor = System.Drawing.Color.Black;
             this.aTextBox1.Location = new System.Drawing.Point(12, 72);
             this.aTextBox1.Mandatory = false;
             this.aTextBox1.Name = "aTextBox1";
-            this.aTextBox1.SelectAllOnFocus = false;
             this.aTextBox1.Size = new System.Drawing.Size(314, 22);
             this.aTextBox1.TabIndex = 2;
-            this.aTextBox1.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.aTextBox1.unFocusedTextColor = System.Drawing.Color.Black;
             // 
             // aLabelTimer1
             // 
             this.aLabelTimer1.AutoSize = true;
-            this.aLabelTimer1.CultureInfo = new System.Globalization.CultureInfo("en-US");
+            this.aLabelTimer1.Culture = new System.Globalization.CultureInfo("en-US");
             this.aLabelTimer1.FormatText = "dd-MMM-yyyy HH:mm:ss";
             this.aLabelTimer1.Location = new System.Drawing.Point(13, 52);
             this.aLabelTimer1.Name = "aLabelTimer1";
-            this.aLabelTimer1.Size = new System.Drawing.Size(148, 17);
+            this.aLabelTimer1.Size = new System.Drawing.Size(129, 16);
             this.aLabelTimer1.TabIndex = 1;
-            this.aLabelTimer1.Text = "30-Apr-2019 01:06:56";
+            this.aLabelTimer1.Text = "03-Apr-2025 21:35:03";
             // 
             // aCheckBox1
             // 
@@ -247,7 +239,7 @@
             this.aCheckBox1.ForeColor = System.Drawing.Color.Black;
             this.aCheckBox1.Location = new System.Drawing.Point(12, 28);
             this.aCheckBox1.Name = "aCheckBox1";
-            this.aCheckBox1.Size = new System.Drawing.Size(108, 21);
+            this.aCheckBox1.Size = new System.Drawing.Size(105, 20);
             this.aCheckBox1.TabIndex = 0;
             this.aCheckBox1.Text = "aCheckBox1";
             this.aCheckBox1.UnCheckColor = System.Drawing.SystemColors.Control;
@@ -256,15 +248,15 @@
             // 
             // aButton1
             // 
-            this.aButton1.FocusedColor = System.Drawing.Color.White;
+            this.aButton1.FocusedColor = System.Drawing.SystemColors.Control;
             this.aButton1.FocusedTextColor = System.Drawing.Color.Black;
             this.aButton1.Location = new System.Drawing.Point(12, 183);
             this.aButton1.Name = "aButton1";
             this.aButton1.Size = new System.Drawing.Size(84, 36);
             this.aButton1.TabIndex = 4;
             this.aButton1.Text = "aButton1";
-            this.aButton1.unFocusedColor = System.Drawing.SystemColors.Control;
-            this.aButton1.unFocusedTextColor = System.Drawing.Color.Black;
+            this.aButton1.UnfocusedColor = System.Drawing.SystemColors.Control;
+            this.aButton1.UnfocusedTextColor = System.Drawing.Color.Black;
             this.aButton1.UseVisualStyleBackColor = true;
             // 
             // FormDemo

@@ -11,10 +11,10 @@ namespace AuroraControls
     public class AButton : Button
     {
         #region Member Variables
-        private Color focusColor = Color.White;
-        private Color unfocusColor = Color.Gray; // Default value
-        private Color focusTextColor = Color.Black;
-        private Color unfocusTextColor = Color.DarkGray; // Default value
+        public Color focusColor = Color.White;
+        public Color unfocusColor = Color.Gray; // Default value
+        public Color focusTextColor = Color.Black;
+        public Color unfocusTextColor = Color.DarkGray; // Default value
         #endregion
  
         public AButton()
@@ -29,7 +29,7 @@ namespace AuroraControls
         {
             if (e is EventArgs)
             {
-                if (this.Focused || sender == this)
+                if (this.Focused )
                 {
                     this.BackColor = focusColor;
                     this.ForeColor = focusTextColor;
