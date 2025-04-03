@@ -10,8 +10,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Atlantean Studio")]
 [assembly: AssemblyProduct("AuroraControls")]
-[assembly: AssemblyCopyright("Copyright © Robby Gunawan S - Atlantean Studio 2025")]
-[assembly: AssemblyTrademark("Robby Gunawan S")]
+[assembly: AssemblyCopyright("Copyright © Robby Gunawan Sutanto - Atlantean Studio 2025")]
+[assembly: AssemblyTrademark("Robby Gunawan Sutanto")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
