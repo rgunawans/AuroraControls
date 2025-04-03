@@ -11,10 +11,10 @@ namespace AuroraControls
     public class ATextBox : TextBox
     {
         #region Member Variables
-        Color focusColor = Color.White;
-        Color unfocusColor = Color.White;
-        Color focusTextColor = Color.Black;
-        Color unfocusTextColor = Color.Black;
+        public Color focusColor = Color.White;
+        public Color unfocusColor = Color.White;
+        public Color focusTextColor = Color.Black;
+        public Color unfocusTextColor = Color.Black;
         bool selectAllOnFocus = false;
         bool isMandatory = false;
         Label warningLabel;
