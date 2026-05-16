@@ -92,5 +92,10 @@ namespace DemoProject
         {
 
         }
+
+        private void FormDemo_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

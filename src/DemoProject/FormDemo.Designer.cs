@@ -228,7 +228,7 @@
             this.aLabelTimer1.Name = "aLabelTimer1";
             this.aLabelTimer1.Size = new System.Drawing.Size(129, 16);
             this.aLabelTimer1.TabIndex = 1;
-            this.aLabelTimer1.Text = "03-Apr-2025 21:35:03";
+            this.aLabelTimer1.Text = "17-Apr-2025 08:26:35";
             // 
             // aCheckBox1
             // 
@@ -275,6 +275,7 @@
             this.Controls.Add(this.aButton1);
             this.Name = "FormDemo";
             this.Text = "Demo App";
+            this.Load += new System.EventHandler(this.FormDemo_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pctFocusText)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctFocusFore)).EndInit();
