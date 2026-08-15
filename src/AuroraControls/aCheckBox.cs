@@ -1,92 +1,108 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
- 
+
 namespace AuroraControls
 {
+    /// <summary>
+    /// Custom CheckBox with enhanced checked/unchecked colors.
+    /// </summary>
+    [ToolboxBitmap(typeof(CheckBox))]
     public class ACheckBox : CheckBox
     {
-        #region Member Variables
-        public Color checkColor = Color.White;
-        public Color unCheckColor = Color.White;
-        public Color checkTextColor = Color.Black;
-        public Color unCheckTextColor = Color.Black;
-        #endregion
- 
-        #region Constructor
+        private Color _checkColor = Color.White;
+        private Color _unCheckColor = Color.White;
+        private Color _checkTextColor = Color.Black;
+        private Color _unCheckTextColor = Color.Black;
+
         public ACheckBox()
         {
-            this.CheckStateChanged += ACheckBox_CheckStateChanged;
-            // Initialize the colors based on the initial checked state
-            ACheckBox_CheckStateChanged(this, EventArgs.Empty);
+            UpdateColors();
         }
-        #endregion
- 
-        private void ACheckBox_CheckStateChanged(object sender, EventArgs e)
+
+        protected override void OnCheckStateChanged(EventArgs e)
         {
-            this.ForeColor = this.Checked ? checkTextColor : unCheckTextColor;
-            this.BackColor = this.Checked ? checkColor : unCheckColor;
+            base.OnCheckStateChanged(e);
+            UpdateColors();
         }
- 
-        #region User Defined Properties
+
+        /// <summary>
+        /// Gets or sets the background color when the checkbox is checked.
+        /// </summary>
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set color when checked")]
         [DisplayName("Checked Color")]
+        [DefaultValue(typeof(Color), "White")]
         public Color CheckColor
         {
-            get => checkColor;
+            get => _checkColor;
             set
             {
-                checkColor = value;
-                Invalidate(); // Redraw the control
+                _checkColor = value;
+                if (this.Checked) UpdateColors();
             }
         }
- 
+
+        /// <summary>
+        /// Gets or sets the background color when the checkbox is unchecked.
+        /// </summary>
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set color when unchecked")]
         [DisplayName("Unchecked Color")]
+        [DefaultValue(typeof(Color), "White")]
         public Color UnCheckColor
         {
-            get => unCheckColor;
+            get => _unCheckColor;
             set
             {
-                unCheckColor = value;
-                Invalidate(); // Redraw the control
+                _unCheckColor = value;
+                if (!this.Checked) UpdateColors();
             }
         }
- 
+
+        /// <summary>
+        /// Gets or sets the text color when the checkbox is checked.
+        /// </summary>
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set text color when checked")]
         [DisplayName("Checked Text Color")]
+        [DefaultValue(typeof(Color), "Black")]
         public Color CheckTextColor
         {
-            get => checkTextColor;
+            get => _checkTextColor;
             set
             {
-                checkTextColor = value;
-                Invalidate(); // Redraw the control
+                _checkTextColor = value;
+                if (this.Checked) UpdateColors();
             }
         }
- 
+
+        /// <summary>
+        /// Gets or sets the text color when the checkbox is unchecked.
+        /// </summary>
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Set text color when unchecked")]
         [DisplayName("Unchecked Text Color")]
+        [DefaultValue(typeof(Color), "Black")]
         public Color UnCheckTextColor
         {
-            get => unCheckTextColor;
+            get => _unCheckTextColor;
             set
             {
-                unCheckTextColor = value;
-                Invalidate(); // Redraw the control
+                _unCheckTextColor = value;
+                if (!this.Checked) UpdateColors();
             }
         }
-        #endregion
+
+        private void UpdateColors()
+        {
+            this.ForeColor = this.Checked ? _checkTextColor : _unCheckTextColor;
+            this.BackColor = this.Checked ? _checkColor : _unCheckColor;
+        }
     }
 }

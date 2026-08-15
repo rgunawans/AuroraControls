@@ -1,90 +1,148 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing;
- 
+using System.Windows.Forms;
+
 namespace AuroraControls
 {
+    /// <summary>
+    /// Custom TextBox with focus colors, select-all behavior, and mandatory state.
+    /// </summary>
+    [ToolboxBitmap(typeof(TextBox))]
     public class ATextBox : TextBox
     {
-        #region Member Variables
-        public Color focusColor = Color.White;
-        public Color unfocusColor = Color.White;
-        public Color focusTextColor = Color.Black;
-        public Color unfocusTextColor = Color.Black;
-        bool selectAllOnFocus = false;
-        bool isMandatory = false;
-        Label warningLabel;
-        #endregion
- 
-        #region Properties
-        public bool Mandatory
-        {
-            get { return isMandatory; }
-            set { isMandatory = value; }
-        }
-        #endregion
- 
-        #region Constructor
+        private Color _focusColor = Color.White;
+        private Color _unfocusColor = Color.White;
+        private Color _focusTextColor = Color.Black;
+        private Color _unfocusTextColor = Color.Black;
+        private bool _selectAllOnFocus = false;
+        private bool _isMandatory = false;
+
         public ATextBox()
         {
-            this.BackColor = focusColor;
-            this.Leave += Textbox_Leave;
-            this.Enter += Textbox_Enter;
-            this.GotFocus += Textbox_Enter; // Consolidated event handler
+            UpdateColors();
         }
-        #endregion
- 
-        private void Textbox_Enter(object sender, EventArgs e)
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this field is required to have a value.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Set to true if this field is required")]
+        [DisplayName("Mandatory")]
+        [DefaultValue(false)]
+        public bool Mandatory
         {
-            this.BackColor = focusColor;
-            this.ForeColor = focusTextColor;
-            if (selectAllOnFocus) this.SelectAll();
+            get => _isMandatory;
+            set => _isMandatory = value;
         }
- 
-        private void Textbox_Leave(object sender, EventArgs e)
+
+        /// <summary>
+        /// Gets or sets a value indicating whether all text is selected when the control receives focus.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Set to true to select all text when focused")]
+        [DisplayName("Select All On Focus")]
+        [DefaultValue(false)]
+        public bool SelectAllOnFocus
         {
-            this.BackColor = unfocusColor;
-            this.ForeColor = unfocusTextColor;
- 
-            if (Mandatory && string.IsNullOrEmpty(this.Text))
+            get => _selectAllOnFocus;
+            set => _selectAllOnFocus = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the background color when the textbox is focused.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Set color when focused")]
+        [DisplayName("Focused Color")]
+        [DefaultValue(typeof(Color), "White")]
+        public Color FocusedColor
+        {
+            get => _focusColor;
+            set
             {
-                this.Focus();
-                ShowWarning("This textbox cannot be blank!");
-            }
-            else
-            {
-                HideWarning();
+                _focusColor = value;
+                if (this.Focused) UpdateColors();
             }
         }
- 
-        private void ShowWarning(string message)
+
+        /// <summary>
+        /// Gets or sets the background color when the textbox is not focused.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Set color when lost focus or leave the control")]
+        [DisplayName("Unfocused Color")]
+        [DefaultValue(typeof(Color), "White")]
+        public Color UnfocusedColor
         {
-            if (warningLabel == null)
+            get => _unfocusColor;
+            set
             {
-                warningLabel = new Label
-                {
-                    ForeColor = Color.Red,
-                    Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
-                    Top = this.Top + (this.Height + 2),
-                    Left = this.Left,
-                    AutoSize = true
-                };
-                this.Parent.Controls.Add(warningLabel);
+                _unfocusColor = value;
+                if (!this.Focused) UpdateColors();
             }
-            warningLabel.Text = message;
-            warningLabel.Visible = true;
         }
- 
-        private void HideWarning()
+
+        /// <summary>
+        /// Gets or sets the text color when the textbox is focused.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Set text color when focused")]
+        [DisplayName("Focused Text Color")]
+        [DefaultValue(typeof(Color), "Black")]
+        public Color FocusedTextColor
         {
-            if (warningLabel != null)
+            get => _focusTextColor;
+            set
             {
-                warningLabel.Visible = false;
+                _focusTextColor = value;
+                if (this.Focused) UpdateColors();
             }
+        }
+
+        /// <summary>
+        /// Gets or sets the text color when the textbox is not focused.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Set text color when lost focus or leave the control")]
+        [DisplayName("Unfocused Text Color")]
+        [DefaultValue(typeof(Color), "Black")]
+        public Color UnfocusedTextColor
+        {
+            get => _unfocusTextColor;
+            set
+            {
+                _unfocusTextColor = value;
+                if (!this.Focused) UpdateColors();
+            }
+        }
+
+        protected override void OnEnter(EventArgs e)
+        {
+            base.OnEnter(e);
+            UpdateColors();
+            if (_selectAllOnFocus)
+            {
+                this.SelectAll();
+            }
+        }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            base.OnLeave(e);
+            UpdateColors();
+        }
+
+        private void UpdateColors()
+        {
+            this.BackColor = this.Focused ? _focusColor : _unfocusColor;
+            this.ForeColor = this.Focused ? _focusTextColor : _unfocusTextColor;
         }
     }
 }

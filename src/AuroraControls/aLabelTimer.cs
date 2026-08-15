@@ -1,72 +1,80 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.ComponentModel;
-using System.Drawing;
 using System.Globalization;
- 
+using System.Windows.Forms;
+using System.Drawing;
+
 namespace AuroraControls
 {
+    /// <summary>
+    /// Custom Label that automatically updates with the current date and time.
+    /// </summary>
+    [ToolboxBitmap(typeof(Label))]
     public class ALabelTimer : Label
     {
-        private Timer timer = new Timer();
- 
-        #region Member Variables
-        private string formatText = "dd-MMM-yyyy HH:mm:ss";
-        private CultureInfo culture = new CultureInfo("en-US", false);
-        #endregion
- 
-        #region Constructor
+        private Timer _timer = new Timer();
+        private string _formatText = "dd-MMM-yyyy HH:mm:ss";
+        private CultureInfo _culture = new CultureInfo("en-US", false);
+
         public ALabelTimer()
         {
-            timer.Interval = 1000;
-            timer.Tick += Timer_Tick;
-            timer.Start();
+            _timer.Interval = 1000;
+            _timer.Tick += Timer_Tick;
+            if (!this.DesignMode)
+            {
+                _timer.Start();
+            }
         }
-        #endregion
- 
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             UpdateLabel();
         }
- 
+
         private void UpdateLabel()
         {
-            this.Text = DateTime.Now.ToString(formatText, culture);
+            this.Text = DateTime.Now.ToString(_formatText, _culture);
         }
- 
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                timer.Tick -= Timer_Tick; // Unsubscribe from the event
-                timer.Dispose(); // Dispose of the timer
+                if (_timer != null)
+                {
+                    _timer.Tick -= Timer_Tick;
+                    _timer.Dispose();
+                    _timer = null;
+                }
             }
             base.Dispose(disposing);
         }
- 
-        #region User Defined Properties
+
+        /// <summary>
+        /// Gets or sets the date and time format string.
+        /// </summary>
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Format Text")]
         [DisplayName("Format Text")]
+        [DefaultValue("dd-MMM-yyyy HH:mm:ss")]
         public string FormatText
         {
-            get => formatText;
-            set => formatText = value;
+            get => _formatText;
+            set => _formatText = value;
         }
- 
+
+        /// <summary>
+        /// Gets or sets the culture info used for formatting the date and time.
+        /// </summary>
         [Browsable(true)]
         [Category("Extended Properties")]
         [Description("Culture Info")]
         [DisplayName("Culture")]
         public CultureInfo Culture
         {
-            get => culture;
-            set => culture = value;
+            get => _culture;
+            set => _culture = value;
         }
-        #endregion
     }
 }

@@ -1,39 +1,24 @@
 # AuroraControls
 
-This is my personal project, based on Windows Form Basic Control
+A custom UI component library for .NET WinForms. Built to provide clean, functional, and modern enhancements to standard Windows Forms controls.
 
-Update April 3, 2025
-Version 0.4.7.25041 for .NET 4.7.1 and 0.4.5.25041 for .NET Framework 4.5
-+ optimize code
-+ update demo app
+### Latest Updates
+* Migrated to SDK-style project.
+* Multi-targeting support for **.NET Framework 4.5**, **.NET Framework 4.7.2**, and **.NET 8.0 (Core)**.
+* Added standard `[ToolboxBitmap]` and XML documentation for better IntelliSense and Designer support.
+* Refactored controls to adhere to WinForms best practices.
 
-Update April 30, 2019
-Version 0.4.7.11 (for .NET 4.7.1 and above) and 0.4.5.11 (for .NET 4.5 and above)
-+ bug fix Mandatory properties
+### Features
+* **AButton**: Custom focus and hover colors.
+* **ACheckBox**: Enhanced checked and unchecked states.
+* **ALabelTimer**: Built-in clock/timer formatting for labels.
+* **ATextBox**: Built-in properties for `Mandatory` (required fields), `SelectAllOnFocus`, and custom focus colors.
 
-Update April 30, 2019
-Version 0.4.7.10 (for .NET 4.7.1 and above) and 0.4.5.10 (for .NET 4.5 and above)
-+ New Property for ATextBox, 'isMandatory' -> if set TRUE, textbox must have value
+### How to use
+1. Download or clone this repository.
+2. Build the solution.
+3. Reference `AuroraControls.dll` in your project or add the components to your Toolbox manually.
+4. (Optional) Run `dotnet pack` to generate a NuGet package.
 
-Update December 2, 2018
-Version 0.4.7.7 (for .NET 4.7.1 and above) and 0.4.5.7 (for .NET 4.5 and above)
-+ New Property for ATextBox, 'selectOnFocus' -> make all text selectAll() when focused
-
-Older version check on our Wiki : https://github.com/rgunawans/AuroraControls/wiki/What's-New-for-previous-version
-
-How to use:
-+ Download or clone
-+ Build the project
-+ Add component to your toolbox manually
-+ For Textbox component
-  + set color for background and foreground (background and text color)
-  + set Mandatory TRUE or FALSE, if set TRUE then textbox must have value
-+ For TimerLabel
-  + set format for date time you want to show
-+ For Button component
-  + set color for background and foreground (background and text color)
-+ For CheckedBox component
-  + set Checked and unchecked color (background and text color)
-
-
-Support for future development and coffee : https://paypal.me/rgunawans
+### Support
+Support for future development and coffee: https://paypal.me/rgunawans
