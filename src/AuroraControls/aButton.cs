@@ -17,6 +17,9 @@ namespace AuroraControls
         private Color _unfocusedTextColor = Color.DarkGray;
         private bool _isHoveredOrFocused = false;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AButton"/> class.
+        /// </summary>
         public AButton()
         {
             UpdateColors();
@@ -59,6 +62,18 @@ namespace AuroraControls
         }
 
         /// <summary>
+        /// Obsolete. Use <see cref="UnfocusedColor"/> instead.
+        /// </summary>
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("Use UnfocusedColor instead.")]
+        public Color unFocusedColor
+        {
+            get => UnfocusedColor;
+            set => UnfocusedColor = value;
+        }
+
+        /// <summary>
         /// Gets or sets the text color when the button is focused or hovered.
         /// </summary>
         [Browsable(true)]
@@ -94,6 +109,19 @@ namespace AuroraControls
             }
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="UnfocusedTextColor"/> instead.
+        /// </summary>
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [Obsolete("Use UnfocusedTextColor instead.")]
+        public Color unFocusedTextColor
+        {
+            get => UnfocusedTextColor;
+            set => UnfocusedTextColor = value;
+        }
+
+        /// <inheritdoc />
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
@@ -101,6 +129,7 @@ namespace AuroraControls
             UpdateColors();
         }
 
+        /// <inheritdoc />
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
@@ -111,6 +140,7 @@ namespace AuroraControls
             }
         }
 
+        /// <inheritdoc />
         protected override void OnGotFocus(EventArgs e)
         {
             base.OnGotFocus(e);
@@ -118,6 +148,7 @@ namespace AuroraControls
             UpdateColors();
         }
 
+        /// <inheritdoc />
         protected override void OnLostFocus(EventArgs e)
         {
             base.OnLostFocus(e);

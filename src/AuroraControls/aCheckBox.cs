@@ -16,11 +16,15 @@ namespace AuroraControls
         private Color _checkTextColor = Color.Black;
         private Color _unCheckTextColor = Color.Black;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ACheckBox"/> class.
+        /// </summary>
         public ACheckBox()
         {
             UpdateColors();
         }
 
+        /// <inheritdoc />
         protected override void OnCheckStateChanged(EventArgs e)
         {
             base.OnCheckStateChanged(e);

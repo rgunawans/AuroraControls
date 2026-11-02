@@ -1,6 +1,0 @@
-C:\@Repos\GithubProjects\AuroraControls\src\AuroraControls\bin\Debug\AuroraControls.dll
-C:\@Repos\GithubProjects\AuroraControls\src\AuroraControls\bin\Debug\AuroraControls.pdb
-C:\@Repos\GithubProjects\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.csproj.AssemblyReference.cache
-C:\@Repos\GithubProjects\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.csproj.CoreCompileInputs.cache
-C:\@Repos\GithubProjects\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.dll
-C:\@Repos\GithubProjects\AuroraControls\src\AuroraControls\obj\Debug\AuroraControls.pdb

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,8 +30,8 @@ namespace DemoProject
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pctFocusFore.BackColor = colorDialog1.Color;
-                aTextBox1.focusColor = colorDialog1.Color;
-                aTextBox2.focusColor = colorDialog1.Color;
+                aTextBox1.FocusedColor = colorDialog1.Color;
+                aTextBox2.FocusedColor = colorDialog1.Color;
                 aButton1.FocusedColor = colorDialog1.Color;
                 aCheckBox1.CheckColor = colorDialog1.Color;
                 setcolor();
@@ -44,8 +44,8 @@ namespace DemoProject
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pctFocusText.BackColor = colorDialog1.Color;
-                aTextBox1.focusTextColor = colorDialog1.Color;
-                aTextBox2.focusTextColor = colorDialog1.Color;
+                aTextBox1.FocusedTextColor = colorDialog1.Color;
+                aTextBox2.FocusedTextColor = colorDialog1.Color;
                 aButton1.FocusedTextColor = colorDialog1.Color;
                 aCheckBox1.CheckTextColor = colorDialog1.Color;
                 setcolor();
@@ -57,8 +57,8 @@ namespace DemoProject
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pctUnFocusFore.BackColor = colorDialog1.Color;
-                aTextBox1.unfocusColor = colorDialog1.Color;
-                aTextBox2.unfocusColor = colorDialog1.Color;
+                aTextBox1.UnfocusedColor = colorDialog1.Color;
+                aTextBox2.UnfocusedColor = colorDialog1.Color;
                 aButton1.UnfocusedColor = colorDialog1.Color;
                 aCheckBox1.UnCheckColor = colorDialog1.Color;
                 setcolor();
@@ -70,8 +70,8 @@ namespace DemoProject
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pctUnFocusText.BackColor = colorDialog1.Color;
-                aTextBox1.unfocusTextColor = colorDialog1.Color;
-                aTextBox2.unfocusTextColor = colorDialog1.Color;
+                aTextBox1.UnfocusedTextColor = colorDialog1.Color;
+                aTextBox2.UnfocusedTextColor = colorDialog1.Color;
                 aButton1.UnfocusedTextColor = colorDialog1.Color;
                 aCheckBox1.UnCheckTextColor = colorDialog1.Color;
                 setcolor();

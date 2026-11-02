@@ -16,14 +16,31 @@ namespace AuroraControls
         private string _formatText = "dd-MMM-yyyy HH:mm:ss";
         private CultureInfo _culture = new CultureInfo("en-US", false);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ALabelTimer"/> class.
+        /// </summary>
         public ALabelTimer()
         {
             _timer.Interval = 1000;
             _timer.Tick += Timer_Tick;
-            if (!this.DesignMode)
+        }
+
+        /// <inheritdoc />
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            if (!this.DesignMode && LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
+                UpdateLabel();
                 _timer.Start();
             }
+        }
+
+        /// <inheritdoc />
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            _timer.Stop();
+            base.OnHandleDestroyed(e);
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -36,6 +53,7 @@ namespace AuroraControls
             this.Text = DateTime.Now.ToString(_formatText, _culture);
         }
 
+        /// <inheritdoc />
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -61,7 +79,11 @@ namespace AuroraControls
         public string FormatText
         {
             get => _formatText;
-            set => _formatText = value;
+            set
+            {
+                _formatText = value;
+                UpdateLabel();
+            }
         }
 
         /// <summary>
@@ -74,7 +96,11 @@ namespace AuroraControls
         public CultureInfo Culture
         {
             get => _culture;
-            set => _culture = value;
+            set
+            {
+                _culture = value;
+                UpdateLabel();
+            }
         }
     }
 }
