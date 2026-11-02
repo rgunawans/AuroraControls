@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace AuroraControls
@@ -24,11 +25,17 @@ namespace AuroraControls
     }
 
     /// <summary>
-    /// Custom TextBox with focus colors, select-all behavior, mandatory state, and text casing options.
+    /// Custom TextBox with focus colors, select-all behavior, mandatory state, text casing, cue banner placeholder, and debounced search.
     /// </summary>
     [ToolboxBitmap(typeof(TextBox))]
     public class ATextBox : TextBox
     {
+        private const int ECM_FIRST = 0x1500;
+        private const int EM_SETCUEBANNER = ECM_FIRST + 1;
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, string lParam);
+
         private Color _focusColor = Color.White;
         private Color _unfocusColor = Color.White;
         private Color _focusTextColor = Color.Black;
@@ -38,6 +45,16 @@ namespace AuroraControls
         private bool _isMandatory = false;
         private TextCasing _textCasing = TextCasing.Normal;
         private bool _isFormatting = false;
+        private string _placeholderText = string.Empty;
+        private int _debounceDelay = 0;
+        private Timer _debounceTimer;
+
+        /// <summary>
+        /// Occurs when text change has paused for the duration specified by <see cref="DebounceDelay"/>.
+        /// </summary>
+        [Category("Extended Events")]
+        [Description("Occurs when text editing pauses for the duration specified by DebounceDelay.")]
+        public event EventHandler DebouncedTextChanged;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ATextBox"/> class.
@@ -45,6 +62,90 @@ namespace AuroraControls
         public ATextBox()
         {
             UpdateColors();
+        }
+
+        /// <summary>
+        /// Gets or sets the placeholder / cue banner text displayed when the control is empty.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Placeholder text shown when textbox is empty.")]
+        [DisplayName("Placeholder Text")]
+        [DefaultValue("")]
+#if NETCOREAPP || NET8_0_OR_GREATER
+        public new string PlaceholderText
+#else
+        public string PlaceholderText
+#endif
+        {
+            get => _placeholderText;
+            set
+            {
+                _placeholderText = value ?? string.Empty;
+#if NETCOREAPP || NET8_0_OR_GREATER
+                base.PlaceholderText = _placeholderText;
+#endif
+                UpdateCueBanner();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the debounce delay in milliseconds before triggering <see cref="DebouncedTextChanged"/>.
+        /// Set to 0 to disable debouncing.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Delay in milliseconds to debounce text changes. 0 disables debouncing.")]
+        [DisplayName("Debounce Delay (ms)")]
+        [DefaultValue(0)]
+        public int DebounceDelay
+        {
+            get => _debounceDelay;
+            set
+            {
+                _debounceDelay = Math.Max(0, value);
+                if (_debounceDelay == 0 && _debounceTimer != null)
+                {
+                    _debounceTimer.Stop();
+                    _debounceTimer.Dispose();
+                    _debounceTimer = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Forces any pending debounced change event to fire immediately.
+        /// </summary>
+        public void FlushDebounce()
+        {
+            if (_debounceTimer != null && _debounceTimer.Enabled)
+            {
+                _debounceTimer.Stop();
+                OnDebouncedTextChanged();
+            }
+        }
+
+        private void UpdateCueBanner()
+        {
+            if (this.IsHandleCreated)
+            {
+                SendMessage(this.Handle, EM_SETCUEBANNER, (IntPtr)1, _placeholderText);
+            }
+        }
+
+        /// <inheritdoc />
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            UpdateCueBanner();
+        }
+
+        /// <summary>
+        /// Triggers the <see cref="DebouncedTextChanged"/> event.
+        /// </summary>
+        protected virtual void OnDebouncedTextChanged()
+        {
+            DebouncedTextChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -264,6 +365,33 @@ namespace AuroraControls
             {
                 UpdateColors();
             }
+
+            if (_debounceDelay > 0)
+            {
+                if (_debounceTimer == null)
+                {
+                    _debounceTimer = new Timer();
+                    _debounceTimer.Tick += (s, args) =>
+                    {
+                        _debounceTimer.Stop();
+                        OnDebouncedTextChanged();
+                    };
+                }
+                _debounceTimer.Interval = _debounceDelay;
+                _debounceTimer.Stop();
+                _debounceTimer.Start();
+            }
+        }
+
+        /// <inheritdoc />
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _debounceTimer?.Dispose();
+                _debounceTimer = null;
+            }
+            base.Dispose(disposing);
         }
 
         private void ApplyCasing()

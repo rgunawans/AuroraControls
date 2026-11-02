@@ -1,4 +1,4 @@
-﻿namespace DemoProject
+namespace DemoProject
 {
     partial class FormDemo
     {
@@ -263,7 +263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 490);
             this.Controls.Add(this.chMandatory);
             this.Controls.Add(this.chSelectAll);
             this.Controls.Add(this.groupBox2);

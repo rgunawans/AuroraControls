@@ -84,5 +84,122 @@ namespace AuroraControls.Tests
             lbl.FormatText = "MMMM";
             Assert.False(string.IsNullOrEmpty(lbl.Text));
         }
+
+        [Fact]
+        public void ATextBox_DebounceAndPlaceholder_PropertiesFunction()
+        {
+            using var txt = new ATextBox();
+            txt.PlaceholderText = "Search...";
+            Assert.Equal("Search...", txt.PlaceholderText);
+
+            txt.DebounceDelay = 100;
+            Assert.Equal(100, txt.DebounceDelay);
+
+            bool debouncedFired = false;
+            txt.DebouncedTextChanged += (s, e) => debouncedFired = true;
+
+            txt.Text = "Query";
+            txt.FlushDebounce();
+            Assert.True(debouncedFired);
+        }
+
+        [Fact]
+        public void AButton_BadgeLoadingAndProgress_PropertiesFunction()
+        {
+            using var btn = new AButton();
+            btn.BadgeText = "99+";
+            btn.BadgeBackColor = Color.Crimson;
+            Assert.Equal("99+", btn.BadgeText);
+            Assert.Equal(Color.Crimson, btn.BadgeBackColor);
+
+            btn.ProgressValue = 50;
+            Assert.Equal(50, btn.ProgressValue);
+
+            btn.Text = "Submit";
+            btn.IsLoading = true;
+            Assert.True(btn.IsLoading);
+            btn.IsLoading = false;
+            Assert.False(btn.IsLoading);
+        }
+
+        [Fact]
+        public void ACheckBox_StyleSwitch_PropertiesFunction()
+        {
+            using var chk = new ACheckBox();
+            Assert.Equal(CheckBoxStyle.Standard, chk.Style);
+
+            chk.Style = CheckBoxStyle.Switch;
+            Assert.Equal(CheckBoxStyle.Switch, chk.Style);
+
+            chk.SwitchOnColor = Color.SeaGreen;
+            chk.SwitchOffColor = Color.LightSlateGray;
+            Assert.Equal(Color.SeaGreen, chk.SwitchOnColor);
+            Assert.Equal(Color.LightSlateGray, chk.SwitchOffColor);
+        }
+
+        [Fact]
+        public void AMessageBoxOptions_DefaultValues_AreCorrect()
+        {
+            var options = new AMessageBoxOptions();
+            Assert.Equal("Notification", options.Title);
+            Assert.Equal(string.Empty, options.Message);
+            Assert.Equal(System.Windows.Forms.MessageBoxButtons.OK, options.Buttons);
+            Assert.Equal(AMessageBoxIcon.Info, options.Icon);
+            Assert.Equal(Color.Empty, options.CardBackColor);
+            Assert.True(options.ShowCloseButton);
+            Assert.Equal(12, options.CornerRadius);
+            Assert.Equal(AMessageBoxTheme.Light, options.Theme);
+            Assert.False(options.ShowInput);
+        }
+
+        [Fact]
+        public void AMessageBoxOptions_DarkModeAndInput_ConfiguresProperly()
+        {
+            var options = new AMessageBoxOptions
+            {
+                Theme = AMessageBoxTheme.Dark,
+                ShowInput = true,
+                DefaultInputText = "Initial Value",
+                DetailsText = "Exception at System.Void()..."
+            };
+
+            Assert.Equal(AMessageBoxTheme.Dark, options.Theme);
+            Assert.True(options.ShowInput);
+            Assert.Equal("Initial Value", options.DefaultInputText);
+            Assert.Equal("Exception at System.Void()...", options.DetailsText);
+        }
+
+        [Fact]
+        public void AMessageBox_DefaultAccentColor_IsPurple()
+        {
+            Assert.Equal(Color.FromArgb(94, 44, 165), AMessageBox.DefaultAccentColor);
+            AMessageBox.DefaultAccentColor = Color.Navy;
+            Assert.Equal(Color.Navy, AMessageBox.DefaultAccentColor);
+            AMessageBox.DefaultAccentColor = Color.FromArgb(94, 44, 165);
+        }
+
+        [Fact]
+        public void ATabControl_PropertiesAndTabSync_WorkCorrectly()
+        {
+            using var tab = new ATabControl();
+            using var page = new System.Windows.Forms.TabPage("Test Page");
+            tab.TabPages.Add(page);
+
+            Assert.Equal(Color.White, tab.ContainerColor);
+            Assert.Equal(Color.White, page.BackColor);
+
+            tab.ContainerColor = Color.FromArgb(30, 30, 30);
+            Assert.Equal(Color.FromArgb(30, 30, 30), page.BackColor);
+
+            using var font = new Font("Segoe UI", 12f, FontStyle.Bold);
+            tab.HeaderFont = font;
+            Assert.Equal(font, tab.HeaderFont);
+            Assert.True(tab.ItemSize.Height >= font.Height);
+
+            tab.ActiveTabColor = Color.Black;
+            tab.ActiveTextColor = Color.Yellow;
+            Assert.Equal(Color.Black, tab.ActiveTabColor);
+            Assert.Equal(Color.Yellow, tab.ActiveTextColor);
+        }
     }
 }
