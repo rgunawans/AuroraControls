@@ -505,10 +505,15 @@ namespace DemoProject
                 }
             };
 
-            var chkLogo = new CheckBox { Text = "Show Logo", Checked = true, Location = new Point(leftCol + 230, 44), AutoSize = true };
+            var chkLogo = new CheckBox { Text = "Logo", Checked = true, Location = new Point(leftCol + 225, 44), AutoSize = true };
             chkLogo.CheckedChanged += (s, e) => barcode.Logo = chkLogo.Checked ? sampleLogo : null;
 
-            var btnFore = new Button { Text = "Bar Color", Location = new Point(leftCol, 78), Width = 95, Height = 28 };
+            var cmbShape = new ComboBox { Location = new Point(leftCol + 285, 42), Width = 115, DropDownStyle = ComboBoxStyle.DropDownList };
+            cmbShape.Items.AddRange(new object[] { BarcodeLogoShape.RoundedRectangle, BarcodeLogoShape.Circle, BarcodeLogoShape.Rectangle });
+            cmbShape.SelectedItem = BarcodeLogoShape.RoundedRectangle;
+            cmbShape.SelectedIndexChanged += (s, e) => barcode.LogoShape = (BarcodeLogoShape)cmbShape.SelectedItem;
+
+            var btnFore = new Button { Text = "Bar Color", Location = new Point(leftCol, 76), Width = 90, Height = 28 };
             btnFore.Click += (s, e) =>
             {
                 using (var cd = new ColorDialog { Color = barcode.ForeColor })
@@ -517,7 +522,7 @@ namespace DemoProject
                 }
             };
 
-            var btnBack = new Button { Text = "Back Color", Location = new Point(leftCol + 105, 78), Width = 95, Height = 28 };
+            var btnBack = new Button { Text = "Back Color", Location = new Point(leftCol + 95, 76), Width = 90, Height = 28 };
             btnBack.Click += (s, e) =>
             {
                 using (var cd = new ColorDialog { Color = barcode.BackColor })
@@ -526,11 +531,24 @@ namespace DemoProject
                 }
             };
 
-            var btnCopy = new Button { Text = "Copy Barcode", Location = new Point(leftCol + 210, 78), Width = 100, Height = 28 };
+            var btnCopy = new Button { Text = "Copy Barcode", Location = new Point(leftCol + 190, 76), Width = 100, Height = 28 };
             btnCopy.Click += (s, e) =>
             {
                 barcode.CopyToClipboard();
-                MessageBox.Show("Barcode image copied to clipboard!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lblStatus.Text = "Barcode berhasil disalin ke clipboard!";
+            };
+
+            var btnSave = new Button { Text = "Save Image", Location = new Point(leftCol + 295, 76), Width = 95, Height = 28 };
+            btnSave.Click += (s, e) =>
+            {
+                using (var sfd = new SaveFileDialog { Filter = "PNG Image|*.png|JPEG Image|*.jpg|Bitmap|*.bmp", FileName = "barcode.png" })
+                {
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        barcode.SaveImage(sfd.FileName);
+                        lblStatus.Text = $"Barcode tersimpan: {System.IO.Path.GetFileName(sfd.FileName)}";
+                    }
+                }
             };
 
             tab.Controls.Add(barcode);
@@ -539,9 +557,11 @@ namespace DemoProject
             tab.Controls.Add(lblType);
             tab.Controls.Add(cmbType);
             tab.Controls.Add(chkLogo);
+            tab.Controls.Add(cmbShape);
             tab.Controls.Add(btnFore);
             tab.Controls.Add(btnBack);
             tab.Controls.Add(btnCopy);
+            tab.Controls.Add(btnSave);
         }
 
         private void FormDemo_Load(object sender, EventArgs e)

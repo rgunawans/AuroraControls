@@ -85,6 +85,30 @@ Live clock and interval timer label with real-time formatting.
 
 ---
 
+#### 7. ALabelBox
+Modern web-like label with hover effects, URL navigation, and one-click clipboard copying.
+
+![ALabelBox](docs/images/component_alabelbox.png)
+
+* **Hover Effects**: `HoverForeColor`, `HoverBackColor`, `HoverUnderline`, and `HoverCursor`.
+* **Hyperlink Navigation**: `IsLink = true`, `Url`, and `LinkClicked` event.
+* **Clipboard Copy**: `EnableCopyOnClick = true`, `CopyText`, context menu, and tooltip feedback.
+
+---
+
+#### 8. ABarcode
+Lightweight 1D and 2D barcode generator with custom colors and logo embedding. Zero external dependencies.
+
+![ABarcode](docs/images/component_abarcode.png)
+
+* **Symbologies**: 2D `QRCode` (ISO/IEC 18004) and 1D `Code128`, `Code39`, `EAN13`.
+* **Color Customization**: Custom `ForeColor` (bars/modules) and `BackColor`.
+* **Logo Embedding**: `Logo` image in center with customizable `LogoShape` (`Rectangle`, `RoundedRectangle`, `Circle`), padding, and border.
+* **Error Correction**: `ErrorCorrection` levels (Low, Medium, Quartile, High) with auto-high protection for logos.
+* **Exporting**: `GenerateImage()`, `SaveImage()`, and `CopyToClipboard()`.
+
+---
+
 ### Getting Started
 
 1. **Clone the repository:**

@@ -42,6 +42,7 @@ namespace AuroraControls.Tests
                 CaptureMessageBox(Path.Combine(outDir, "component_amessagebox.png"));
                 CaptureLabelTimer(Path.Combine(outDir, "component_alabeltimer.png"));
                 CaptureLabelBox(Path.Combine(outDir, "component_alabelbox.png"));
+                CaptureBarcode(Path.Combine(outDir, "component_abarcode.png"));
             });
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
@@ -522,6 +523,91 @@ namespace AuroraControls.Tests
                 EnableCopyOnClick = true
             };
             form.Controls.Add(lbl3);
+
+            form.Show();
+            Application.DoEvents();
+
+            using var bmp = new Bitmap(form.Width, form.Height);
+            form.DrawToBitmap(bmp, new Rectangle(0, 0, form.Width, form.Height));
+            bmp.Save(filePath, ImageFormat.Png);
+            form.Close();
+        }
+
+        private void CaptureBarcode(string filePath)
+        {
+            using var form = new Form
+            {
+                ClientSize = new Size(580, 240),
+                BackColor = Color.White,
+                FormBorderStyle = FormBorderStyle.None,
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(100, 100)
+            };
+
+            var title = new Label
+            {
+                Text = "ABarcode Component (1D & 2D Barcode, Color, Logo)",
+                Font = new Font("Segoe UI", 12f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(33, 37, 41),
+                Location = new Point(20, 15),
+                AutoSize = true
+            };
+            form.Controls.Add(title);
+
+            // Sample Aurora logo
+            var logo = new Bitmap(36, 36);
+            using (var g = Graphics.FromImage(logo))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.Clear(Color.DodgerBlue);
+                using (var f = new Font("Segoe UI", 16f, FontStyle.Bold))
+                using (var b = new SolidBrush(Color.White))
+                using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+                {
+                    g.DrawString("A", f, b, new RectangleF(0, 0, 36, 36), sf);
+                }
+            }
+
+            // QR Code with Logo & Custom ForeColor
+            var qr = new ABarcode
+            {
+                Location = new Point(25, 50),
+                Size = new Size(160, 160),
+                BarcodeType = BarcodeType.QRCode,
+                Value = "https://github.com/rgunawans/AuroraControls",
+                ForeColor = Color.MidnightBlue,
+                BackColor = Color.FromArgb(248, 249, 250),
+                Logo = logo,
+                LogoShape = BarcodeLogoShape.RoundedRectangle,
+                LogoSizePercent = 25
+            };
+            form.Controls.Add(qr);
+
+            // Code 128
+            var code128 = new ABarcode
+            {
+                Location = new Point(205, 50),
+                Size = new Size(350, 75),
+                BarcodeType = BarcodeType.Code128,
+                Value = "AURORA-128-DEMO",
+                ForeColor = Color.Black,
+                BackColor = Color.FromArgb(248, 249, 250),
+                ShowText = true
+            };
+            form.Controls.Add(code128);
+
+            // Code 39
+            var code39 = new ABarcode
+            {
+                Location = new Point(205, 135),
+                Size = new Size(350, 75),
+                BarcodeType = BarcodeType.Code39,
+                Value = "CODE39-OK",
+                ForeColor = Color.DarkSlateGray,
+                BackColor = Color.FromArgb(248, 249, 250),
+                ShowText = true
+            };
+            form.Controls.Add(code39);
 
             form.Show();
             Application.DoEvents();
