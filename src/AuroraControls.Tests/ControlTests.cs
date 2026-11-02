@@ -52,6 +52,28 @@ namespace AuroraControls.Tests
         }
 
         [Fact]
+        public void ATextBox_TextCasing_FormatsCorrectly()
+        {
+            using var txt = new ATextBox();
+
+            txt.TextCasing = TextCasing.UpperCase;
+            txt.Text = "hello world";
+            Assert.Equal("HELLO WORLD", txt.Text);
+
+            txt.TextCasing = TextCasing.LowerCase;
+            txt.Text = "HELLO WORLD";
+            Assert.Equal("hello world", txt.Text);
+
+            txt.TextCasing = TextCasing.CapitalizeEachWord;
+            txt.Text = "hello world";
+            Assert.Equal("Hello World", txt.Text);
+
+            txt.TextCasing = TextCasing.SentenceCase;
+            txt.Text = "hello world. this is a test! awesome?";
+            Assert.Equal("Hello world. This is a test! Awesome?", txt.Text);
+        }
+
+        [Fact]
         public void ALabelTimer_FormatAndCulture_UpdateTextImmediately()
         {
             using var lbl = new ALabelTimer();

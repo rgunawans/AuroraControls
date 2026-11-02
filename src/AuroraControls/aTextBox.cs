@@ -1,12 +1,30 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace AuroraControls
 {
     /// <summary>
-    /// Custom TextBox with focus colors, select-all behavior, and mandatory state.
+    /// Specifies the text casing style for <see cref="ATextBox"/>.
+    /// </summary>
+    public enum TextCasing
+    {
+        /// <summary>Normal text as entered.</summary>
+        Normal,
+        /// <summary>Capitalize the first letter of each sentence.</summary>
+        SentenceCase,
+        /// <summary>Convert all characters to lowercase.</summary>
+        LowerCase,
+        /// <summary>Convert all characters to uppercase.</summary>
+        UpperCase,
+        /// <summary>Capitalize the first letter of each word.</summary>
+        CapitalizeEachWord
+    }
+
+    /// <summary>
+    /// Custom TextBox with focus colors, select-all behavior, mandatory state, and text casing options.
     /// </summary>
     [ToolboxBitmap(typeof(TextBox))]
     public class ATextBox : TextBox
@@ -18,6 +36,8 @@ namespace AuroraControls
         private Color _mandatoryColor = Color.MistyRose;
         private bool _selectAllOnFocus = false;
         private bool _isMandatory = false;
+        private TextCasing _textCasing = TextCasing.Normal;
+        private bool _isFormatting = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ATextBox"/> class.
@@ -25,6 +45,36 @@ namespace AuroraControls
         public ATextBox()
         {
             UpdateColors();
+        }
+
+        /// <summary>
+        /// Gets or sets the text casing rule applied to the control.
+        /// </summary>
+        [Browsable(true)]
+        [Category("Extended Properties")]
+        [Description("Specifies the casing formatting applied to the text.")]
+        [DisplayName("Text Casing")]
+        [DefaultValue(TextCasing.Normal)]
+        public TextCasing TextCasing
+        {
+            get => _textCasing;
+            set
+            {
+                _textCasing = value;
+                if (_textCasing == TextCasing.UpperCase)
+                {
+                    this.CharacterCasing = CharacterCasing.Upper;
+                }
+                else if (_textCasing == TextCasing.LowerCase)
+                {
+                    this.CharacterCasing = CharacterCasing.Lower;
+                }
+                else
+                {
+                    this.CharacterCasing = CharacterCasing.Normal;
+                }
+                ApplyCasing();
+            }
         }
 
         /// <summary>
@@ -201,6 +251,7 @@ namespace AuroraControls
         protected override void OnLeave(EventArgs e)
         {
             base.OnLeave(e);
+            ApplyCasing();
             UpdateColors();
         }
 
@@ -208,9 +259,70 @@ namespace AuroraControls
         protected override void OnTextChanged(EventArgs e)
         {
             base.OnTextChanged(e);
+            ApplyCasing();
             if (!this.Focused)
             {
                 UpdateColors();
+            }
+        }
+
+        private void ApplyCasing()
+        {
+            if (_isFormatting || _textCasing == TextCasing.Normal || string.IsNullOrEmpty(this.Text))
+            {
+                return;
+            }
+
+            string formatted = FormatCasing(this.Text, _textCasing);
+            if (formatted != this.Text)
+            {
+                _isFormatting = true;
+                int selStart = this.SelectionStart;
+                int selLength = this.SelectionLength;
+                this.Text = formatted;
+                this.SelectionStart = Math.Min(selStart, this.Text.Length);
+                this.SelectionLength = Math.Min(selLength, Math.Max(0, this.Text.Length - this.SelectionStart));
+                _isFormatting = false;
+            }
+        }
+
+        private static string FormatCasing(string input, TextCasing casing)
+        {
+            if (string.IsNullOrEmpty(input)) return input;
+
+            switch (casing)
+            {
+                case TextCasing.LowerCase:
+                    return input.ToLower();
+
+                case TextCasing.UpperCase:
+                    return input.ToUpper();
+
+                case TextCasing.CapitalizeEachWord:
+                    return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input.ToLower());
+
+                case TextCasing.SentenceCase:
+                    char[] chars = input.ToLower().ToCharArray();
+                    bool newSentence = true;
+                    for (int i = 0; i < chars.Length; i++)
+                    {
+                        if (char.IsLetter(chars[i]))
+                        {
+                            if (newSentence)
+                            {
+                                chars[i] = char.ToUpper(chars[i]);
+                                newSentence = false;
+                            }
+                        }
+                        else if (chars[i] == '.' || chars[i] == '!' || chars[i] == '?' || chars[i] == '\n' || chars[i] == '\r')
+                        {
+                            newSentence = true;
+                        }
+                    }
+                    return new string(chars);
+
+                default:
+                    return input;
             }
         }
 
