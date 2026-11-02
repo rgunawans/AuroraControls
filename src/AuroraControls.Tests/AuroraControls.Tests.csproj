@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AuroraControls\AuroraControls.csproj" />
+    <ProjectReference Include="..\DemoProject\DemoProject.csproj" />
   </ItemGroup>
 
 </Project>
