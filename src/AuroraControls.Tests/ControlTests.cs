@@ -201,5 +201,95 @@ namespace AuroraControls.Tests
             Assert.Equal(Color.Black, tab.ActiveTabColor);
             Assert.Equal(Color.Yellow, tab.ActiveTextColor);
         }
+
+        [Fact]
+        public void ALabelBox_HoverPropertiesAndStyle_WorkCorrectly()
+        {
+            using var lbl = new ALabelBox();
+            lbl.Text = "https://github.com";
+            lbl.HoverForeColor = Color.Blue;
+            lbl.HoverBackColor = Color.LightYellow;
+            lbl.HoverUnderline = true;
+
+            Assert.Equal(Color.Blue, lbl.HoverForeColor);
+            Assert.Equal(Color.LightYellow, lbl.HoverBackColor);
+            Assert.True(lbl.HoverUnderline);
+            Assert.Equal(Cursors.Hand, lbl.HoverCursor);
+        }
+
+        [Fact]
+        public void ALabelBox_LinkPropertiesAndExecution_WorkCorrectly()
+        {
+            using var lbl = new ALabelBox();
+            lbl.Url = "https://github.com/rgunawans/AuroraControls";
+            lbl.AutoOpenUrl = false; // Prevent opening real browser in test
+            lbl.IsLink = true;
+
+            string openedUrl = null;
+            lbl.LinkClicked += (s, url) => openedUrl = url;
+
+            lbl.ExecuteLink();
+            Assert.Equal("https://github.com/rgunawans/AuroraControls", openedUrl);
+        }
+
+        [Fact]
+        public void ALabelBox_CopyTextAndEvents_WorkCorrectly()
+        {
+            using var lbl = new ALabelBox();
+            lbl.Text = "Aurora Controls";
+            lbl.CopyText = "Custom Copy String";
+            lbl.ShowFeedbackOnCopy = false;
+
+            string copiedText = null;
+            lbl.LabelCopied += (s, text) => copiedText = text;
+
+            lbl.CopyToClipboard();
+            Assert.Equal("Custom Copy String", copiedText);
+        }
+
+        [Fact]
+        public void ABarcode_QRCodeWithLogoAndColors_GeneratesValidBitmap()
+        {
+            using var barcode = new ABarcode();
+            barcode.BarcodeType = BarcodeType.QRCode;
+            barcode.Value = "https://github.com/rgunawans/AuroraControls";
+            barcode.ForeColor = Color.Navy;
+            barcode.BackColor = Color.WhiteSmoke;
+            barcode.ErrorCorrection = QRCodeErrorCorrection.High;
+
+            // Create a small test logo
+            using var logo = new Bitmap(32, 32);
+            using (var g = Graphics.FromImage(logo))
+            {
+                g.Clear(Color.Crimson);
+            }
+            barcode.Logo = logo;
+            barcode.LogoShape = BarcodeLogoShape.RoundedRectangle;
+            barcode.LogoSizePercent = 25;
+
+            using var bmp = barcode.GenerateImage(200, 200);
+            Assert.NotNull(bmp);
+            Assert.Equal(200, bmp.Width);
+            Assert.Equal(200, bmp.Height);
+        }
+
+        [Theory]
+        [InlineData(BarcodeType.Code128, "AURORA-12345")]
+        [InlineData(BarcodeType.Code39, "AURORA99")]
+        [InlineData(BarcodeType.EAN13, "4006381333931")]
+        public void ABarcode_1DTypes_GenerateValidBitmap(BarcodeType type, string value)
+        {
+            using var barcode = new ABarcode();
+            barcode.BarcodeType = type;
+            barcode.Value = value;
+            barcode.ForeColor = Color.DarkSlateBlue;
+            barcode.BackColor = Color.White;
+            barcode.ShowText = true;
+
+            using var bmp = barcode.GenerateImage(300, 120);
+            Assert.NotNull(bmp);
+            Assert.Equal(300, bmp.Width);
+            Assert.Equal(120, bmp.Height);
+        }
     }
 }

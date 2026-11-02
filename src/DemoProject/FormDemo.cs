@@ -122,6 +122,16 @@ namespace DemoProject
             var pageMsgBox = new TabPage("AMessageBox Demo") { Padding = new Padding(12) };
             SetupMessageBoxDemoTab(pageMsgBox);
 
+            // ALabelBox Showcase Tab
+            var pageLabelBox = new TabPage("ALabelBox Demo") { Padding = new Padding(12) };
+            SetupLabelBoxDemoTab(pageLabelBox);
+
+            // ABarcode Showcase Tab
+            var pageBarcode = new TabPage("ABarcode Demo") { Padding = new Padding(12) };
+            SetupBarcodeDemoTab(pageBarcode);
+
+            aTabControl1.TabPages.Add(pageBarcode);
+            aTabControl1.TabPages.Add(pageLabelBox);
             aTabControl1.TabPages.Add(pageMsgBox);
             aTabControl1.TabPages.Add(page1);
             aTabControl1.TabPages.Add(page2);
@@ -297,6 +307,79 @@ namespace DemoProject
             tab.Controls.Add(btn8);
         }
 
+        private void SetupLabelBoxDemoTab(TabPage tab)
+        {
+            var lblInfo = new Label
+            {
+                Text = "ALabelBox: Hover warna web, Link URL otomatis, dan Copy teks ke clipboard:",
+                Location = new Point(15, 12),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 9f, FontStyle.Bold)
+            };
+            tab.Controls.Add(lblInfo);
+
+            // 1. Web Hover Effect Label
+            var lblHover = new ALabelBox
+            {
+                Text = "Hover saya! (Berubah warna Crimson & underline ala Web)",
+                Location = new Point(15, 45),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10f, FontStyle.Regular),
+                ForeColor = Color.DarkSlateGray,
+                HoverForeColor = Color.Crimson,
+                HoverUnderline = true
+            };
+            tab.Controls.Add(lblHover);
+
+            // 2. URL Link Label
+            var lblUrl = new ALabelBox
+            {
+                Text = "Kunjungi Repository AuroraControls di GitHub (Klik untuk buka URL)",
+                Location = new Point(15, 80),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10f, FontStyle.Regular),
+                ForeColor = Color.RoyalBlue,
+                HoverForeColor = Color.Navy,
+                IsLink = true,
+                Url = "https://github.com/rgunawans/AuroraControls"
+            };
+            lblUrl.LinkClicked += (s, url) =>
+            {
+                lblStatus.Text = $"[ALabelBox] Membuka URL: {url}";
+            };
+            tab.Controls.Add(lblUrl);
+
+            // 3. Copy on click Label
+            var lblCopy = new ALabelBox
+            {
+                Text = "INV-2026-AURORA-8899 (Klik di sini untuk Salin Kode ke Clipboard)",
+                Location = new Point(15, 115),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10f, FontStyle.Regular),
+                ForeColor = Color.SeaGreen,
+                HoverForeColor = Color.DarkGreen,
+                HoverUnderline = true,
+                EnableCopyOnClick = true,
+                CopyFeedbackMessage = "Kode Invoice tersalin ke clipboard!"
+            };
+            lblCopy.LabelCopied += (s, text) =>
+            {
+                lblStatus.Text = $"[ALabelBox] Berhasil menyalin: \"{text}\" ke clipboard!";
+            };
+            tab.Controls.Add(lblCopy);
+
+            // 4. Note on Right-click Context Menu
+            var lblNote = new Label
+            {
+                Text = "* Tip: Klik kanan pada setiap ALabelBox untuk menu konteks \"Copy\".",
+                Location = new Point(15, 155),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 8.5f, FontStyle.Italic),
+                ForeColor = Color.Gray
+            };
+            tab.Controls.Add(lblNote);
+        }
+
         private void setcolor()
         {
             aTextBox1.Mandatory = chMandatory.Checked;
@@ -365,6 +448,90 @@ namespace DemoProject
         private void ChMandatory_CheckedChanged(object sender, EventArgs e)
         {
             setcolor();
+        }
+
+        private void SetupBarcodeDemoTab(TabPage tab)
+        {
+            var barcode = new ABarcode
+            {
+                Location = new Point(15, 10),
+                Size = new Size(180, 180),
+                BarcodeType = BarcodeType.QRCode,
+                Value = "https://github.com/rgunawans/AuroraControls",
+                ForeColor = Color.Black,
+                BackColor = Color.White
+            };
+
+            // Sample Aurora logo
+            var sampleLogo = new Bitmap(48, 48);
+            using (var g = Graphics.FromImage(sampleLogo))
+            {
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.Clear(Color.DodgerBlue);
+                using (var f = new Font("Segoe UI", 22f, FontStyle.Bold))
+                using (var b = new SolidBrush(Color.White))
+                using (var sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+                {
+                    g.DrawString("A", f, b, new RectangleF(0, 0, 48, 48), sf);
+                }
+            }
+            barcode.Logo = sampleLogo;
+
+            int leftCol = 210;
+            var lblVal = new Label { Text = "Value / Text:", Location = new Point(leftCol, 15), AutoSize = true };
+            var txtVal = new TextBox { Text = barcode.Value, Location = new Point(leftCol + 85, 12), Width = 260 };
+            txtVal.TextChanged += (s, e) => barcode.Value = txtVal.Text;
+
+            var lblType = new Label { Text = "Type:", Location = new Point(leftCol, 45), AutoSize = true };
+            var cmbType = new ComboBox { Location = new Point(leftCol + 85, 42), Width = 130, DropDownStyle = ComboBoxStyle.DropDownList };
+            cmbType.Items.AddRange(new object[] { BarcodeType.QRCode, BarcodeType.Code128, BarcodeType.Code39, BarcodeType.EAN13 });
+            cmbType.SelectedItem = BarcodeType.QRCode;
+            cmbType.SelectedIndexChanged += (s, e) =>
+            {
+                barcode.BarcodeType = (BarcodeType)cmbType.SelectedItem;
+                if (barcode.BarcodeType == BarcodeType.EAN13 && !long.TryParse(txtVal.Text, out _))
+                {
+                    txtVal.Text = "4006381333931";
+                }
+            };
+
+            var chkLogo = new CheckBox { Text = "Show Logo", Checked = true, Location = new Point(leftCol + 230, 44), AutoSize = true };
+            chkLogo.CheckedChanged += (s, e) => barcode.Logo = chkLogo.Checked ? sampleLogo : null;
+
+            var btnFore = new Button { Text = "Bar Color", Location = new Point(leftCol, 78), Width = 95, Height = 28 };
+            btnFore.Click += (s, e) =>
+            {
+                using (var cd = new ColorDialog { Color = barcode.ForeColor })
+                {
+                    if (cd.ShowDialog() == DialogResult.OK) barcode.ForeColor = cd.Color;
+                }
+            };
+
+            var btnBack = new Button { Text = "Back Color", Location = new Point(leftCol + 105, 78), Width = 95, Height = 28 };
+            btnBack.Click += (s, e) =>
+            {
+                using (var cd = new ColorDialog { Color = barcode.BackColor })
+                {
+                    if (cd.ShowDialog() == DialogResult.OK) barcode.BackColor = cd.Color;
+                }
+            };
+
+            var btnCopy = new Button { Text = "Copy Barcode", Location = new Point(leftCol + 210, 78), Width = 100, Height = 28 };
+            btnCopy.Click += (s, e) =>
+            {
+                barcode.CopyToClipboard();
+                MessageBox.Show("Barcode image copied to clipboard!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
+
+            tab.Controls.Add(barcode);
+            tab.Controls.Add(lblVal);
+            tab.Controls.Add(txtVal);
+            tab.Controls.Add(lblType);
+            tab.Controls.Add(cmbType);
+            tab.Controls.Add(chkLogo);
+            tab.Controls.Add(btnFore);
+            tab.Controls.Add(btnBack);
+            tab.Controls.Add(btnCopy);
         }
 
         private void FormDemo_Load(object sender, EventArgs e)

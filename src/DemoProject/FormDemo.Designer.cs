@@ -44,6 +44,7 @@ namespace DemoProject
             this.aTextBox2 = new AuroraControls.ATextBox();
             this.aTextBox1 = new AuroraControls.ATextBox();
             this.aLabelTimer1 = new AuroraControls.ALabelTimer();
+            this.aLabelBox1 = new AuroraControls.ALabelBox();
             this.aCheckBox1 = new AuroraControls.ACheckBox();
             this.aButton1 = new AuroraControls.AButton();
             this.groupBox1.SuspendLayout();

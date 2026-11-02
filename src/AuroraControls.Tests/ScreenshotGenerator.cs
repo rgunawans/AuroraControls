@@ -41,6 +41,7 @@ namespace AuroraControls.Tests
                 CaptureTabControl(Path.Combine(outDir, "component_atabcontrol.png"));
                 CaptureMessageBox(Path.Combine(outDir, "component_amessagebox.png"));
                 CaptureLabelTimer(Path.Combine(outDir, "component_alabeltimer.png"));
+                CaptureLabelBox(Path.Combine(outDir, "component_alabelbox.png"));
             });
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
@@ -455,6 +456,72 @@ namespace AuroraControls.Tests
                 ForeColor = Color.FromArgb(80, 80, 80)
             };
             form.Controls.Add(lbl2);
+
+            form.Show();
+            Application.DoEvents();
+
+            using var bmp = new Bitmap(form.Width, form.Height);
+            form.DrawToBitmap(bmp, new Rectangle(0, 0, form.Width, form.Height));
+            bmp.Save(filePath, ImageFormat.Png);
+            form.Close();
+        }
+
+        private void CaptureLabelBox(string filePath)
+        {
+            using var form = new Form
+            {
+                ClientSize = new Size(500, 190),
+                BackColor = Color.White,
+                FormBorderStyle = FormBorderStyle.None,
+                StartPosition = FormStartPosition.Manual,
+                Location = new Point(100, 100)
+            };
+
+            var title = new Label
+            {
+                Text = "ALabelBox Component (Web Hover, URL & Copy)",
+                Font = new Font("Segoe UI", 12f, FontStyle.Bold),
+                ForeColor = Color.FromArgb(33, 37, 41),
+                Location = new Point(20, 15),
+                AutoSize = true
+            };
+            form.Controls.Add(title);
+
+            var lbl1 = new ALabelBox
+            {
+                Text = "Interactive Web Hover (Underline & Color)",
+                Location = new Point(25, 55),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10f, FontStyle.Regular),
+                ForeColor = Color.DarkSlateGray,
+                HoverForeColor = Color.Crimson,
+                HoverUnderline = true
+            };
+            form.Controls.Add(lbl1);
+
+            var lbl2 = new ALabelBox
+            {
+                Text = "https://github.com/rgunawans/AuroraControls (Click to open)",
+                Location = new Point(25, 90),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10f, FontStyle.Underline),
+                ForeColor = Color.RoyalBlue,
+                HoverForeColor = Color.Navy,
+                IsLink = true,
+                Url = "https://github.com/rgunawans/AuroraControls"
+            };
+            form.Controls.Add(lbl2);
+
+            var lbl3 = new ALabelBox
+            {
+                Text = "INV-2026-AURORA (Click to Copy to Clipboard)",
+                Location = new Point(25, 125),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10f, FontStyle.Regular),
+                ForeColor = Color.SeaGreen,
+                EnableCopyOnClick = true
+            };
+            form.Controls.Add(lbl3);
 
             form.Show();
             Application.DoEvents();
