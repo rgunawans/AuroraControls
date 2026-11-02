@@ -42,6 +42,16 @@ namespace DemoProject
                 lblStatus.Text = $"[Debounce Search] Hasil: \"{aTextBox1.Text}\" ({DateTime.Now:HH:mm:ss})";
             };
 
+            // ALabelBox event handlers
+            aLabelBox1.LinkClicked += (s, url) =>
+            {
+                lblStatus.Text = $"[ALabelBox] URL diklik: {url}";
+            };
+            aLabelBox1.LabelCopied += (s, text) =>
+            {
+                lblStatus.Text = $"[ALabelBox] Teks tersalin: \"{text}\"";
+            };
+
             // ATextBox 2: Placeholder & Sentence casing
             aTextBox2.PlaceholderText = "Field Wajib & Title Case...";
             aTextBox2.TextCasing = TextCasing.CapitalizeEachWord;

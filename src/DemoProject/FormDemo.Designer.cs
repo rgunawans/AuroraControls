@@ -231,6 +231,22 @@ namespace DemoProject
             this.aLabelTimer1.TabIndex = 1;
             this.aLabelTimer1.Text = "17-Apr-2025 08:26:35";
             // 
+            // aLabelBox1
+            // 
+            this.aLabelBox1.AutoSize = true;
+            this.aLabelBox1.Location = new System.Drawing.Point(13, 103);
+            this.aLabelBox1.Name = "aLabelBox1";
+            this.aLabelBox1.Size = new System.Drawing.Size(260, 16);
+            this.aLabelBox1.TabIndex = 9;
+            this.aLabelBox1.Text = "AuroraControls (Klik URL / Salin / Hover)";
+            this.aLabelBox1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.aLabelBox1.HoverForeColor = System.Drawing.Color.Crimson;
+            this.aLabelBox1.HoverUnderline = true;
+            this.aLabelBox1.IsLink = true;
+            this.aLabelBox1.Url = "https://github.com/rgunawans/AuroraControls";
+            this.aLabelBox1.EnableCopyOnClick = true;
+            this.aLabelBox1.CopyFeedbackMessage = "URL AuroraControls berhasil disalin!";
+            // 
             // aCheckBox1
             // 
             this.aCheckBox1.AutoSize = true;
@@ -272,6 +288,7 @@ namespace DemoProject
             this.Controls.Add(this.aTextBox2);
             this.Controls.Add(this.aTextBox1);
             this.Controls.Add(this.aLabelTimer1);
+            this.Controls.Add(this.aLabelBox1);
             this.Controls.Add(this.aCheckBox1);
             this.Controls.Add(this.aButton1);
             this.Name = "FormDemo";
@@ -293,6 +310,7 @@ namespace DemoProject
         private AuroraControls.AButton aButton1;
         private AuroraControls.ACheckBox aCheckBox1;
         private AuroraControls.ALabelTimer aLabelTimer1;
+        private AuroraControls.ALabelBox aLabelBox1;
         private AuroraControls.ATextBox aTextBox1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private AuroraControls.ATextBox aTextBox2;
