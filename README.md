@@ -2,23 +2,38 @@
 
 A custom UI component library for .NET WinForms. Built to provide clean, functional, and modern enhancements to standard Windows Forms controls.
 
-### Latest Updates
-* Migrated to SDK-style project.
-* Multi-targeting support for **.NET Framework 4.5**, **.NET Framework 4.7.2**, and **.NET 8.0 (Core)**.
-* Added standard `[ToolboxBitmap]` and XML documentation for better IntelliSense and Designer support.
-* Refactored controls to adhere to WinForms best practices.
+### Target Frameworks
+* **.NET 8.0+** (`net8.0-windows`)
+* **.NET Framework 4.7.2+** (`net472`)
+* **.NET Framework 4.5** (`net45`)
 
-### Features
-* **AButton**: Custom focus and hover colors.
-* **ACheckBox**: Enhanced checked and unchecked states.
-* **ALabelTimer**: Built-in clock/timer formatting for labels.
-* **ATextBox**: Built-in properties for `Mandatory` (required fields), `SelectAllOnFocus`, and custom focus colors.
+### Controls & Features
+* **`AButton`**: Customizable hover and focus appearance (`HoverColor`, `FocusColor`).
+* **`ACheckBox`**: Enhanced checked and unchecked background and border states (`CheckedColor`, `UncheckedColor`).
+* **`ALabelTimer`**: Built-in clock/timer formatting with customizable interval, display formats, and date-time updates.
+* **`ATextBox`**:
+  * `Mandatory`: Visual required-field indicators (`MandatoryColor`).
+  * `SelectAllOnFocus`: Automatically highlight text when control gains focus.
+  * `TextCasing`: Text formatting support (`Normal`, `LowerCase`, `UpperCase`, `TitleCase`, `SentenceCase`).
+  * Custom focus styling (`FocusBorderColor`, `FocusBackColor`).
 
-### How to use
-1. Download or clone this repository.
-2. Build the solution.
-3. Reference `AuroraControls.dll` in your project or add the components to your Toolbox manually.
-4. (Optional) Run `dotnet pack` to generate a NuGet package.
+### Getting Started
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rgunawans/AuroraControls.git
+   ```
+2. Build solution:
+   ```bash
+   dotnet build
+   ```
+3. Run tests:
+   ```bash
+   dotnet test
+   ```
+4. Reference `AuroraControls.dll` in your WinForms project or generate a NuGet package:
+   ```bash
+   dotnet pack -c Release
+   ```
 
 ### Support
-Support for future development and coffee: https://paypal.me/rgunawans
+Support future development: https://paypal.me/rgunawans
