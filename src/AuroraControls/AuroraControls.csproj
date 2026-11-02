@@ -11,7 +11,7 @@
     <PackageId>AuroraControls</PackageId>
     <Version>1.0.0</Version>
     <Authors>Robby Gunawan Sutanto</Authors>
-    <Company>Atlantean Studio</Company>
+    <Company>Buku Tamu Digital</Company>
     <Description>A custom UI component library for .NET WinForms.</Description>
     <RepositoryUrl>https://github.com/rgunawans/AuroraControls</RepositoryUrl>
     <Tags>winforms;controls;ui;components</Tags>

@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AuroraControls")]
 [assembly: AssemblyDescription("Simple Component for daily use")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Atlantean Studio")]
+[assembly: AssemblyCompany("Buku Tamu Digital")]
 [assembly: AssemblyProduct("AuroraControls")]
-[assembly: AssemblyCopyright("Copyright © Robby Gunawan Sutanto - Atlantean Studio 2018-2025")]
+[assembly: AssemblyCopyright("Copyright © Robby Gunawan Sutanto - Buku Tamu Digital 2018-2025")]
 [assembly: AssemblyTrademark("Robby Gunawan Sutanto")]
 [assembly: AssemblyCulture("")]
 
